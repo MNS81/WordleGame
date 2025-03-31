@@ -1,0 +1,1583 @@
+﻿@page "/"
+@inject NavigationManager NavManager
+
+<ConfirmDialog @ref="dialog" />
+
+<table style="margin: 0 auto">
+    <tr>
+        <td><Button Color="@btnColor111" Size="ButtonSize.Medium" Style="@btnStyle111" Disabled>@btnText111</Button></td>
+        <td><Button Color="@btnColor112" Size="ButtonSize.Medium" Style="@btnStyle112" Disabled>@btnText112</Button></td>
+        <td><Button Color="@btnColor113" Size="ButtonSize.Medium" Style="@btnStyle113" Disabled>@btnText113</Button></td>
+        <td><Button Color="@btnColor114" Size="ButtonSize.Medium" Style="@btnStyle114" Disabled>@btnText114</Button></td>
+        <td><Button Color="@btnColor115" Size="ButtonSize.Medium" Style="@btnStyle115" Disabled>@btnText115</Button></td>
+    </tr>
+    <tr>
+        <td><Button Color="@btnColor121" Size="ButtonSize.Medium" Style="@btnStyle121" Disabled>@btnText121</Button></td>
+        <td><Button Color="@btnColor122" Size="ButtonSize.Medium" Style="@btnStyle122" Disabled>@btnText122</Button></td>
+        <td><Button Color="@btnColor123" Size="ButtonSize.Medium" Style="@btnStyle123" Disabled>@btnText123</Button></td>
+        <td><Button Color="@btnColor124" Size="ButtonSize.Medium" Style="@btnStyle124" Disabled>@btnText124</Button></td>
+        <td><Button Color="@btnColor125" Size="ButtonSize.Medium" Style="@btnStyle125" Disabled>@btnText125</Button></td>
+    </tr>
+    <tr>
+        <td><Button Color="@btnColor131" Size="ButtonSize.Medium" Style="@btnStyle131" Disabled>@btnText131</Button></td>
+        <td><Button Color="@btnColor132" Size="ButtonSize.Medium" Style="@btnStyle132" Disabled>@btnText132</Button></td>
+        <td><Button Color="@btnColor133" Size="ButtonSize.Medium" Style="@btnStyle133" Disabled>@btnText133</Button></td>
+        <td><Button Color="@btnColor134" Size="ButtonSize.Medium" Style="@btnStyle134" Disabled>@btnText134</Button></td>
+        <td><Button Color="@btnColor135" Size="ButtonSize.Medium" Style="@btnStyle135" Disabled>@btnText135</Button></td>
+    </tr>
+    <tr>
+        <td><Button Color="@btnColor141" Size="ButtonSize.Medium" Style="@btnStyle141" Disabled>@btnText141</Button></td>
+        <td><Button Color="@btnColor142" Size="ButtonSize.Medium" Style="@btnStyle142" Disabled>@btnText142</Button></td>
+        <td><Button Color="@btnColor143" Size="ButtonSize.Medium" Style="@btnStyle143" Disabled>@btnText143</Button></td>
+        <td><Button Color="@btnColor144" Size="ButtonSize.Medium" Style="@btnStyle144" Disabled>@btnText144</Button></td>
+        <td><Button Color="@btnColor145" Size="ButtonSize.Medium" Style="@btnStyle145" Disabled>@btnText145</Button></td>
+    </tr>
+    <tr>
+        <td><Button Color="@btnColor151" Size="ButtonSize.Medium" Style="@btnStyle151" Disabled>@btnText151</Button></td>
+        <td><Button Color="@btnColor152" Size="ButtonSize.Medium" Style="@btnStyle152" Disabled>@btnText152</Button></td>
+        <td><Button Color="@btnColor153" Size="ButtonSize.Medium" Style="@btnStyle153" Disabled>@btnText153</Button></td>
+        <td><Button Color="@btnColor154" Size="ButtonSize.Medium" Style="@btnStyle154" Disabled>@btnText154</Button></td>
+        <td><Button Color="@btnColor155" Size="ButtonSize.Medium" Style="@btnStyle155" Disabled>@btnText155</Button></td>
+    </tr>
+    <tr>
+        <td><Button Color="@btnColor161" Size="ButtonSize.Medium" Style="@btnStyle161" Disabled>@btnText161</Button></td>
+        <td><Button Color="@btnColor162" Size="ButtonSize.Medium" Style="@btnStyle162" Disabled>@btnText162</Button></td>
+        <td><Button Color="@btnColor163" Size="ButtonSize.Medium" Style="@btnStyle163" Disabled>@btnText163</Button></td>
+        <td><Button Color="@btnColor164" Size="ButtonSize.Medium" Style="@btnStyle164" Disabled>@btnText164</Button></td>
+        <td><Button Color="@btnColor165" Size="ButtonSize.Medium" Style="@btnStyle165" Disabled>@btnText165</Button></td>
+    </tr>
+</table>
+
+<TextInput @bind-Value="@currentWord" Disabled=true TextAlignment="Alignment.Center" Style="font-size:30px;background:#e6f2ff;border:none" />
+
+<div class="row sm">
+    <div class="col p-1 d-grid"><Button Color="@btnColor1" Size="ButtonSize.ExtraSmall" Style="@btnStyle1" @onclick="() => AddChar('Й')">Й</Button></div>
+    <div class="col p-1 d-grid"><Button Color="@btnColor2" Size="ButtonSize.ExtraSmall" Style="@btnStyle2" @onclick="() => AddChar('Ц')">Ц</Button></div>
+    <div class="col p-1 d-grid"><Button Color="@btnColor3" Size="ButtonSize.ExtraSmall" Style="@btnStyle3" @onclick="() => AddChar('У')">У</Button></div>
+    <div class="col p-1 d-grid"><Button Color="@btnColor4" Size="ButtonSize.ExtraSmall" Style="@btnStyle4" @onclick="() => AddChar('К')">К</Button></div>
+    <div class="col p-1 d-grid"><Button Color="@btnColor5" Size="ButtonSize.ExtraSmall" Style="@btnStyle5" @onclick="() => AddChar('Е')">Е</Button></div>
+    <div class="col p-1 d-grid"><Button Color="@btnColor6" Size="ButtonSize.ExtraSmall" Style="@btnStyle6" @onclick="() => AddChar('Н')">Н</Button></div>
+    <div class="col p-1 d-grid"><Button Color="@btnColor7" Size="ButtonSize.ExtraSmall" Style="@btnStyle7" @onclick="() => AddChar('Г')">Г</Button></div>
+    <div class="col p-1 d-grid"><Button Color="@btnColor8" Size="ButtonSize.ExtraSmall" Style="@btnStyle8" @onclick="() => AddChar('Ш')">Ш</Button></div>
+    <div class="col p-1 d-grid"><Button Color="@btnColor9" Size="ButtonSize.ExtraSmall" Style="@btnStyle9" @onclick="() => AddChar('Щ')">Щ</Button></div>
+    <div class="col p-1 d-grid"><Button Color="@btnColor10" Size="ButtonSize.ExtraSmall" Style="@btnStyle10" @onclick="() => AddChar('З')">З</Button></div>
+    <div class="col p-1 d-grid"><Button Color="@btnColor11" Size="ButtonSize.ExtraSmall" Style="@btnStyle11" @onclick="() => AddChar('Х')">Х</Button></div>
+    <div class="col p-1 d-grid"><Button Color="@btnColor12" Size="ButtonSize.ExtraSmall" Style="@btnStyle12" @onclick="() => AddChar('Ъ')">Ъ</Button></div>
+</div>
+<div class="row sm" style="margin-left:10px;margin-right:10px">
+    <div class="col p-1 d-grid"><Button Color="@btnColor13" Size="ButtonSize.ExtraSmall" Style="@btnStyle13" @onclick="() => AddChar('Ф')">Ф</Button></div>
+    <div class="col p-1 d-grid"><Button Color="@btnColor14" Size="ButtonSize.ExtraSmall" Style="@btnStyle14" @onclick="() => AddChar('Ы')">Ы</Button></div>
+    <div class="col p-1 d-grid"><Button Color="@btnColor15" Size="ButtonSize.ExtraSmall" Style="@btnStyle15" @onclick="() => AddChar('В')">В</Button></div>
+    <div class="col p-1 d-grid"><Button Color="@btnColor16" Size="ButtonSize.ExtraSmall" Style="@btnStyle16" @onclick="() => AddChar('А')">А</Button></div>
+    <div class="col p-1 d-grid"><Button Color="@btnColor17" Size="ButtonSize.ExtraSmall" Style="@btnStyle17" @onclick="() => AddChar('П')">П</Button></div>
+    <div class="col p-1 d-grid"><Button Color="@btnColor18" Size="ButtonSize.ExtraSmall" Style="@btnStyle18" @onclick="() => AddChar('Р')">Р</Button></div>
+    <div class="col p-1 d-grid"><Button Color="@btnColor19" Size="ButtonSize.ExtraSmall" Style="@btnStyle19" @onclick="() => AddChar('О')">О</Button></div>
+    <div class="col p-1 d-grid"><Button Color="@btnColor20" Size="ButtonSize.ExtraSmall" Style="@btnStyle20" @onclick="() => AddChar('Л')">Л</Button></div>
+    <div class="col p-1 d-grid"><Button Color="@btnColor21" Size="ButtonSize.ExtraSmall" Style="@btnStyle21" @onclick="() => AddChar('Д')">Д</Button></div>
+    <div class="col p-1 d-grid"><Button Color="@btnColor22" Size="ButtonSize.ExtraSmall" Style="@btnStyle22" @onclick="() => AddChar('Ж')">Ж</Button></div>
+    <div class="col p-1 d-grid"><Button Color="@btnColor23" Size="ButtonSize.ExtraSmall" Style="@btnStyle23" @onclick="() => AddChar('Э')">Э</Button></div>
+</div>
+<div class="row sm">
+    <div class="col p-1 d-grid"><Button Color="ButtonColor.Primary" Size="ButtonSize.ExtraSmall" @onclick="BackSpace"><Icon Name="IconName.Backspace" Size="IconSize.x5" /></Button></div>
+    <div class="col p-1 d-grid"><Button Color="@btnColor24" Size="ButtonSize.ExtraSmall" Style="@btnStyle24" @onclick="() => AddChar('Я')">Я</Button></div>
+    <div class="col p-1 d-grid"><Button Color="@btnColor25" Size="ButtonSize.ExtraSmall" Style="@btnStyle25" @onclick="() => AddChar('Ч')">Ч</Button></div>
+    <div class="col p-1 d-grid"><Button Color="@btnColor26" Size="ButtonSize.ExtraSmall" Style="@btnStyle26" @onclick="() => AddChar('С')">С</Button></div>
+    <div class="col p-1 d-grid"><Button Color="@btnColor27" Size="ButtonSize.ExtraSmall" Style="@btnStyle27" @onclick="() => AddChar('М')">М</Button></div>
+    <div class="col p-1 d-grid"><Button Color="@btnColor28" Size="ButtonSize.ExtraSmall" Style="@btnStyle28" @onclick="() => AddChar('И')">И</Button></div>
+    <div class="col p-1 d-grid"><Button Color="@btnColor29" Size="ButtonSize.ExtraSmall" Style="@btnStyle29" @onclick="() => AddChar('Т')">Т</Button></div>
+    <div class="col p-1 d-grid"><Button Color="@btnColor30" Size="ButtonSize.ExtraSmall" Style="@btnStyle30" @onclick="() => AddChar('Ь')">Ь</Button></div>
+    <div class="col p-1 d-grid"><Button Color="@btnColor31" Size="ButtonSize.ExtraSmall" Style="@btnStyle31" @onclick="() => AddChar('Б')">Б</Button></div>
+    <div class="col p-1 d-grid"><Button Color="@btnColor32" Size="ButtonSize.ExtraSmall" Style="@btnStyle32" @onclick="() => AddChar('Ю')">Ю</Button></div>
+    <div class="col p-1 d-grid"><Button Color="ButtonColor.Primary" Size="ButtonSize.ExtraSmall" @onclick="CheckWord"><Icon Name="IconName.BackspaceReverse" Size="IconSize.x5" /></Button></div>
+</div>
+
+@code {
+    [Inject] ModalService ModalService { get; set; } = default!;
+    private IAudioManager audioManager;
+    private IAudioPlayer audioPlayer;
+    private ConfirmDialog dialog = default!;
+    private string secretWord = "";
+    private string currentWord = "";
+    List<string> wordsList = new();
+    private int count = 1;
+    private ButtonColor btnColor1 = ButtonColor.Info;
+    private ButtonColor btnColor2 = ButtonColor.Info;
+    private ButtonColor btnColor3 = ButtonColor.Info;
+    private ButtonColor btnColor4 = ButtonColor.Info;
+    private ButtonColor btnColor5 = ButtonColor.Info;
+    private ButtonColor btnColor6 = ButtonColor.Info;
+    private ButtonColor btnColor7 = ButtonColor.Info;
+    private ButtonColor btnColor8 = ButtonColor.Info;
+    private ButtonColor btnColor9 = ButtonColor.Info;
+    private ButtonColor btnColor10 = ButtonColor.Info;
+    private ButtonColor btnColor11 = ButtonColor.Info;
+    private ButtonColor btnColor12 = ButtonColor.Info;
+    private ButtonColor btnColor13 = ButtonColor.Info;
+    private ButtonColor btnColor14 = ButtonColor.Info;
+    private ButtonColor btnColor15 = ButtonColor.Info;
+    private ButtonColor btnColor16 = ButtonColor.Info;
+    private ButtonColor btnColor17 = ButtonColor.Info;
+    private ButtonColor btnColor18 = ButtonColor.Info;
+    private ButtonColor btnColor19 = ButtonColor.Info;
+    private ButtonColor btnColor20 = ButtonColor.Info;
+    private ButtonColor btnColor21 = ButtonColor.Info;
+    private ButtonColor btnColor22 = ButtonColor.Info;
+    private ButtonColor btnColor23 = ButtonColor.Info;
+    private ButtonColor btnColor24 = ButtonColor.Info;
+    private ButtonColor btnColor25 = ButtonColor.Info;
+    private ButtonColor btnColor26 = ButtonColor.Info;
+    private ButtonColor btnColor27 = ButtonColor.Info;
+    private ButtonColor btnColor28 = ButtonColor.Info;
+    private ButtonColor btnColor29 = ButtonColor.Info;
+    private ButtonColor btnColor30 = ButtonColor.Info;
+    private ButtonColor btnColor31 = ButtonColor.Info;
+    private ButtonColor btnColor32 = ButtonColor.Info;
+    private ButtonColor btnColor111 = ButtonColor.Info;
+    private ButtonColor btnColor112 = ButtonColor.Info;
+    private ButtonColor btnColor113 = ButtonColor.Info;
+    private ButtonColor btnColor114 = ButtonColor.Info;
+    private ButtonColor btnColor115 = ButtonColor.Info;
+    private ButtonColor btnColor121 = ButtonColor.Info;
+    private ButtonColor btnColor122 = ButtonColor.Info;
+    private ButtonColor btnColor123 = ButtonColor.Info;
+    private ButtonColor btnColor124 = ButtonColor.Info;
+    private ButtonColor btnColor125 = ButtonColor.Info;
+    private ButtonColor btnColor131 = ButtonColor.Info;
+    private ButtonColor btnColor132 = ButtonColor.Info;
+    private ButtonColor btnColor133 = ButtonColor.Info;
+    private ButtonColor btnColor134 = ButtonColor.Info;
+    private ButtonColor btnColor135 = ButtonColor.Info;
+    private ButtonColor btnColor141 = ButtonColor.Info;
+    private ButtonColor btnColor142 = ButtonColor.Info;
+    private ButtonColor btnColor143 = ButtonColor.Info;
+    private ButtonColor btnColor144 = ButtonColor.Info;
+    private ButtonColor btnColor145 = ButtonColor.Info;
+    private ButtonColor btnColor151 = ButtonColor.Info;
+    private ButtonColor btnColor152 = ButtonColor.Info;
+    private ButtonColor btnColor153 = ButtonColor.Info;
+    private ButtonColor btnColor154 = ButtonColor.Info;
+    private ButtonColor btnColor155 = ButtonColor.Info;
+    private ButtonColor btnColor161 = ButtonColor.Info;
+    private ButtonColor btnColor162 = ButtonColor.Info;
+    private ButtonColor btnColor163 = ButtonColor.Info;
+    private ButtonColor btnColor164 = ButtonColor.Info;
+    private ButtonColor btnColor165 = ButtonColor.Info;
+    private string btnStyle1 = "height:40px;color:black";
+    private string btnStyle2 = "height:40px;color:black";
+    private string btnStyle3 = "height:40px;color:black";
+    private string btnStyle4 = "height:40px;color:black";
+    private string btnStyle5 = "height:40px;color:black";
+    private string btnStyle6 = "height:40px;color:black";
+    private string btnStyle7 = "height:40px;color:black";
+    private string btnStyle8 = "height:40px;color:black";
+    private string btnStyle9 = "height:40px;color:black";
+    private string btnStyle10 = "height:40px;color:black";
+    private string btnStyle11 = "height:40px;color:black";
+    private string btnStyle12 = "height:40px;color:black";
+    private string btnStyle13 = "height:40px;color:black";
+    private string btnStyle14 = "height:40px;color:black";
+    private string btnStyle15 = "height:40px;color:black";
+    private string btnStyle16 = "height:40px;color:black";
+    private string btnStyle17 = "height:40px;color:black";
+    private string btnStyle18 = "height:40px;color:black";
+    private string btnStyle19 = "height:40px;color:black";
+    private string btnStyle20 = "height:40px;color:black";
+    private string btnStyle21 = "height:40px;color:black";
+    private string btnStyle22 = "height:40px;color:black";
+    private string btnStyle23 = "height:40px;color:black";
+    private string btnStyle24 = "height:40px;color:black";
+    private string btnStyle25 = "height:40px;color:black";
+    private string btnStyle26 = "height:40px;color:black";
+    private string btnStyle27 = "height:40px;color:black";
+    private string btnStyle28 = "height:40px;color:black";
+    private string btnStyle29 = "height:40px;color:black";
+    private string btnStyle30 = "height:40px;color:black";
+    private string btnStyle31 = "height:40px;color:black";
+    private string btnStyle32 = "height:40px;color:black";
+    private string btnStyle111 = "width:60px;height:60px;color:black;font-size:34px";
+    private string btnStyle112 = "width:60px;height:60px;color:black;font-size:34px";
+    private string btnStyle113 = "width:60px;height:60px;color:black;font-size:34px";
+    private string btnStyle114 = "width:60px;height:60px;color:black;font-size:34px";
+    private string btnStyle115 = "width:60px;height:60px;color:black;font-size:34px";
+    private string btnStyle121 = "width:60px;height:60px;color:black;font-size:34px";
+    private string btnStyle122 = "width:60px;height:60px;color:black;font-size:34px";
+    private string btnStyle123 = "width:60px;height:60px;color:black;font-size:34px";
+    private string btnStyle124 = "width:60px;height:60px;color:black;font-size:34px";
+    private string btnStyle125 = "width:60px;height:60px;color:black;font-size:34px";
+    private string btnStyle131 = "width:60px;height:60px;color:black;font-size:34px";
+    private string btnStyle132 = "width:60px;height:60px;color:black;font-size:34px";
+    private string btnStyle133 = "width:60px;height:60px;color:black;font-size:34px";
+    private string btnStyle134 = "width:60px;height:60px;color:black;font-size:34px";
+    private string btnStyle135 = "width:60px;height:60px;color:black;font-size:34px";
+    private string btnStyle141 = "width:60px;height:60px;color:black;font-size:34px";
+    private string btnStyle142 = "width:60px;height:60px;color:black;font-size:34px";
+    private string btnStyle143 = "width:60px;height:60px;color:black;font-size:34px";
+    private string btnStyle144 = "width:60px;height:60px;color:black;font-size:34px";
+    private string btnStyle145 = "width:60px;height:60px;color:black;font-size:34px";
+    private string btnStyle151 = "width:60px;height:60px;color:black;font-size:34px";
+    private string btnStyle152 = "width:60px;height:60px;color:black;font-size:34px";
+    private string btnStyle153 = "width:60px;height:60px;color:black;font-size:34px";
+    private string btnStyle154 = "width:60px;height:60px;color:black;font-size:34px";
+    private string btnStyle155 = "width:60px;height:60px;color:black;font-size:34px";
+    private string btnStyle161 = "width:60px;height:60px;color:black;font-size:34px";
+    private string btnStyle162 = "width:60px;height:60px;color:black;font-size:34px";
+    private string btnStyle163 = "width:60px;height:60px;color:black;font-size:34px";
+    private string btnStyle164 = "width:60px;height:60px;color:black;font-size:34px";
+    private string btnStyle165 = "width:60px;height:60px;color:black;font-size:34px";
+    private string btnText111 = "";
+    private string btnText112 = "";
+    private string btnText113 = "";
+    private string btnText114 = "";
+    private string btnText115 = "";
+    private string btnText121 = "";
+    private string btnText122 = "";
+    private string btnText123 = "";
+    private string btnText124 = "";
+    private string btnText125 = "";
+    private string btnText131 = "";
+    private string btnText132 = "";
+    private string btnText133 = "";
+    private string btnText134 = "";
+    private string btnText135 = "";
+    private string btnText141 = "";
+    private string btnText142 = "";
+    private string btnText143 = "";
+    private string btnText144 = "";
+    private string btnText145 = "";
+    private string btnText151 = "";
+    private string btnText152 = "";
+    private string btnText153 = "";
+    private string btnText154 = "";
+    private string btnText155 = "";
+    private string btnText161 = "";
+    private string btnText162 = "";
+    private string btnText163 = "";
+    private string btnText164 = "";
+    private string btnText165 = "";
+
+    protected override void OnInitialized()
+    {
+#if ANDROID
+        PlaySoundAndroid("newgame.wav");
+#else
+        PlaySoundWindows("newgame.wav");
+#endif
+        Words words = new();
+        wordsList = words.words;
+        secretWord = GetNewWord();
+    }
+
+    private async Task ShowModal(ModalType modalType, string title, string msg)
+    {
+        var modalOption = new ModalOption
+            {
+                Title = title,
+                Message = msg,
+                Type = modalType,
+            };
+        await ModalService.ShowAsync(modalOption);
+    }
+
+    private async Task PlaySoundAndroid(string fileName)
+    {
+        var audioManager = AudioManager.Current;
+        using var stream = await FileSystem.OpenAppPackageFileAsync(fileName);
+        var audioPlayer = audioManager.CreatePlayer(stream);
+        audioPlayer.Play();
+    }
+
+    private Task PlaySoundWindows(string filePath)
+    {
+        return Task.Run(() =>
+        {
+            using var audioFile = new AudioFileReader(filePath);
+            using var outputDevice = new WaveOutEvent();
+            outputDevice.Init(audioFile);
+            outputDevice.Play();
+            while (outputDevice.PlaybackState == PlaybackState.Playing)
+            {
+                Task.Delay(100).Wait();
+            }
+        });
+    }
+
+    private async Task NewGameConfirmation()
+    {
+#if ANDROID
+        PlaySoundAndroid("win.wav");
+#else
+        PlaySoundWindows("win.wav");
+#endif
+        var confirmation = await dialog.ShowAsync(
+            title: "Поздравляю!",
+            message1: $"Вы угадали слово {secretWord}",
+            message2: "Хотите сыграть ещё?");
+
+        if (confirmation) NavManager.NavigateTo(NavManager.Uri, forceLoad: true);
+        else Environment.Exit(0);
+    }
+
+    private async Task GameOverConfirmation()
+    {
+#if ANDROID
+        PlaySoundAndroid("lose.wav");
+#else
+        PlaySoundWindows("lose.wav");
+#endif
+        var confirmation = await dialog.ShowAsync(
+            title: "К сожалению вы проиграли!",
+            message1: $"Загаданное слово {secretWord}",
+            message2: "Хотите сыграть ещё?");
+
+        if (confirmation) NavManager.NavigateTo(NavManager.Uri, forceLoad: true);
+        else Environment.Exit(0);
+    }
+
+    private string GetNewWord()
+    {
+        Random rnd = new Random();
+        int randomIndex = rnd.Next(0, wordsList.Count);
+        return wordsList[randomIndex];
+    }
+
+    private void AddChar(char c)
+    {
+        if (currentWord.Length < 5) currentWord += c;
+    }
+
+    private void BackSpace()
+    {
+        if (currentWord.Length > 0) currentWord = currentWord[..^1];
+    }
+
+    private void CheckWord()
+    {
+        if (currentWord.Length < 5) return;
+        else if (!wordsList.Contains(currentWord))
+        {
+            currentWord = "";
+            ShowModal(ModalType.Danger, "Внимание!", "Такого слова нет в словаре!");
+            return;
+        }
+        else
+        {
+            if (currentWord == secretWord) NewGameConfirmation();
+            else
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    if (count == 1)
+                    {
+                        if (currentWord[i] == secretWord[i])
+                        {
+                            if (i == 0)
+                            {
+                                btnText111 = currentWord[i].ToString();
+                                btnStyle111 = "width:60px;height:60px;color:black;font-size:34px";
+                                btnColor111 = ButtonColor.Success;
+                            }
+                            if (i == 1)
+                            {
+                                btnText112 = currentWord[i].ToString();
+                                btnStyle112 = "width:60px;height:60px;color:black;font-size:34px";
+                                btnColor112 = ButtonColor.Success;
+                            }
+                            if (i == 2)
+                            {
+                                btnText113 = currentWord[i].ToString();
+                                btnStyle113 = "width:60px;height:60px;color:black;font-size:34px";
+                                btnColor113 = ButtonColor.Success;
+                            }
+                            if (i == 3)
+                            {
+                                btnText114 = currentWord[i].ToString();
+                                btnStyle114 = "width:60px;height:60px;color:black;font-size:34px";
+                                btnColor114 = ButtonColor.Success;
+                            }
+                            if (i == 4)
+                            {
+                                btnText115 = currentWord[i].ToString();
+                                btnStyle115 = "width:60px;height:60px;color:black;font-size:34px";
+                                btnColor115 = ButtonColor.Success;
+                            }
+                            if (currentWord[i] == 'Й') { btnColor1 = ButtonColor.Warning; btnStyle1 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ц') { btnColor2 = ButtonColor.Warning; btnStyle2 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'У') { btnColor3 = ButtonColor.Warning; btnStyle3 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'К') { btnColor4 = ButtonColor.Warning; btnStyle4 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Е') { btnColor5 = ButtonColor.Warning; btnStyle5 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Н') { btnColor6 = ButtonColor.Warning; btnStyle6 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Г') { btnColor7 = ButtonColor.Warning; btnStyle7 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ш') { btnColor8 = ButtonColor.Warning; btnStyle8 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Щ') { btnColor9 = ButtonColor.Warning; btnStyle9 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'З') { btnColor10 = ButtonColor.Warning; btnStyle10 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Х') { btnColor11 = ButtonColor.Warning; btnStyle11 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ъ') { btnColor12 = ButtonColor.Warning; btnStyle12 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ф') { btnColor13 = ButtonColor.Warning; btnStyle13 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ы') { btnColor14 = ButtonColor.Warning; btnStyle14 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'В') { btnColor15 = ButtonColor.Warning; btnStyle15 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'А') { btnColor16 = ButtonColor.Warning; btnStyle16 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'П') { btnColor17 = ButtonColor.Warning; btnStyle17 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Р') { btnColor18 = ButtonColor.Warning; btnStyle18 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'О') { btnColor19 = ButtonColor.Warning; btnStyle19 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Л') { btnColor20 = ButtonColor.Warning; btnStyle20 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Д') { btnColor21 = ButtonColor.Warning; btnStyle21 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ж') { btnColor22 = ButtonColor.Warning; btnStyle22 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Э') { btnColor23 = ButtonColor.Warning; btnStyle23 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Я') { btnColor24 = ButtonColor.Warning; btnStyle24 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ч') { btnColor25 = ButtonColor.Warning; btnStyle25 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'С') { btnColor26 = ButtonColor.Warning; btnStyle26 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'М') { btnColor27 = ButtonColor.Warning; btnStyle27 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'И') { btnColor28 = ButtonColor.Warning; btnStyle28 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Т') { btnColor29 = ButtonColor.Warning; btnStyle29 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ь') { btnColor30 = ButtonColor.Warning; btnStyle30 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Б') { btnColor31 = ButtonColor.Warning; btnStyle31 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ю') { btnColor32 = ButtonColor.Warning; btnStyle32 = "height: 40px; color: black"; }
+                        }
+                        else
+                        {
+                            if (secretWord.Contains(currentWord[i]))
+                            {
+                                if (i == 0)
+                                {
+                                    btnText111 = currentWord[i].ToString();
+                                    btnStyle111 = "width:60px;height:60px;color:black;font-size:34px";
+                                    btnColor111 = ButtonColor.Warning;
+                                }
+                                if (i == 1)
+                                {
+                                    btnText112 = currentWord[i].ToString();
+                                    btnStyle112 = "width:60px;height:60px;color:black;font-size:34px";
+                                    btnColor112 = ButtonColor.Warning;
+                                }
+                                if (i == 2)
+                                {
+                                    btnText113 = currentWord[i].ToString();
+                                    btnStyle113 = "width:60px;height:60px;color:black;font-size:34px";
+                                    btnColor113 = ButtonColor.Warning;
+                                }
+                                if (i == 3)
+                                {
+                                    btnText114 = currentWord[i].ToString();
+                                    btnStyle114 = "width:60px;height:60px;color:black;font-size:34px";
+                                    btnColor114 = ButtonColor.Warning;
+                                }
+                                if (i == 4)
+                                {
+                                    btnText115 = currentWord[i].ToString();
+                                    btnStyle115 = "width:60px;height:60px;color:black;font-size:34px";
+                                    btnColor115 = ButtonColor.Warning;
+                                }
+                                if (currentWord[i] == 'Й') { btnColor1 = ButtonColor.Warning; btnStyle1 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ц') { btnColor2 = ButtonColor.Warning; btnStyle2 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'У') { btnColor3 = ButtonColor.Warning; btnStyle3 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'К') { btnColor4 = ButtonColor.Warning; btnStyle4 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Е') { btnColor5 = ButtonColor.Warning; btnStyle5 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Н') { btnColor6 = ButtonColor.Warning; btnStyle6 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Г') { btnColor7 = ButtonColor.Warning; btnStyle7 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ш') { btnColor8 = ButtonColor.Warning; btnStyle8 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Щ') { btnColor9 = ButtonColor.Warning; btnStyle9 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'З') { btnColor10 = ButtonColor.Warning; btnStyle10 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Х') { btnColor11 = ButtonColor.Warning; btnStyle11 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ъ') { btnColor12 = ButtonColor.Warning; btnStyle12 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ф') { btnColor13 = ButtonColor.Warning; btnStyle13 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ы') { btnColor14 = ButtonColor.Warning; btnStyle14 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'В') { btnColor15 = ButtonColor.Warning; btnStyle15 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'А') { btnColor16 = ButtonColor.Warning; btnStyle16 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'П') { btnColor17 = ButtonColor.Warning; btnStyle17 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Р') { btnColor18 = ButtonColor.Warning; btnStyle18 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'О') { btnColor19 = ButtonColor.Warning; btnStyle19 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Л') { btnColor20 = ButtonColor.Warning; btnStyle20 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Д') { btnColor21 = ButtonColor.Warning; btnStyle21 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ж') { btnColor22 = ButtonColor.Warning; btnStyle22 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Э') { btnColor23 = ButtonColor.Warning; btnStyle23 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Я') { btnColor24 = ButtonColor.Warning; btnStyle24 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ч') { btnColor25 = ButtonColor.Warning; btnStyle25 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'С') { btnColor26 = ButtonColor.Warning; btnStyle26 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'М') { btnColor27 = ButtonColor.Warning; btnStyle27 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'И') { btnColor28 = ButtonColor.Warning; btnStyle28 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Т') { btnColor29 = ButtonColor.Warning; btnStyle29 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ь') { btnColor30 = ButtonColor.Warning; btnStyle30 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Б') { btnColor31 = ButtonColor.Warning; btnStyle31 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ю') { btnColor32 = ButtonColor.Warning; btnStyle32 = "height: 40px; color: black"; }
+                            }
+                            else if (!secretWord.Contains(currentWord[i]))
+                            {
+                                if (i == 0)
+                                {
+                                    btnText111 = currentWord[i].ToString();
+                                    btnStyle111 = "width:60px;height:60px;color:white;font-size:34px";
+                                    btnColor111 = ButtonColor.Secondary;
+                                }
+                                if (i == 1)
+                                {
+                                    btnText112 = currentWord[i].ToString();
+                                    btnStyle112 = "width:60px;height:60px;color:white;font-size:34px";
+                                    btnColor112 = ButtonColor.Secondary;
+                                }
+                                if (i == 2)
+                                {
+                                    btnText113 = currentWord[i].ToString();
+                                    btnStyle113 = "width:60px;height:60px;color:white;font-size:34px";
+                                    btnColor113 = ButtonColor.Secondary;
+                                }
+                                if (i == 3)
+                                {
+                                    btnText114 = currentWord[i].ToString();
+                                    btnStyle114 = "width:60px;height:60px;color:white;font-size:34px";
+                                    btnColor114 = ButtonColor.Secondary;
+                                }
+                                if (i == 4)
+                                {
+                                    btnText115 = currentWord[i].ToString();
+                                    btnStyle115 = "width:60px;height:60px;color:white;font-size:34px";
+                                    btnColor115 = ButtonColor.Secondary;
+                                }
+                                if (currentWord[i] == 'Й') { btnColor1 = ButtonColor.Secondary; btnStyle1 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ц') { btnColor2 = ButtonColor.Secondary; btnStyle2 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'У') { btnColor3 = ButtonColor.Secondary; btnStyle3 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'К') { btnColor4 = ButtonColor.Secondary; btnStyle4 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Е') { btnColor5 = ButtonColor.Secondary; btnStyle5 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Н') { btnColor6 = ButtonColor.Secondary; btnStyle6 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Г') { btnColor7 = ButtonColor.Secondary; btnStyle7 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ш') { btnColor8 = ButtonColor.Secondary; btnStyle8 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Щ') { btnColor9 = ButtonColor.Secondary; btnStyle9 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'З') { btnColor10 = ButtonColor.Secondary; btnStyle10 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Х') { btnColor11 = ButtonColor.Secondary; btnStyle11 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ъ') { btnColor12 = ButtonColor.Secondary; btnStyle12 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ф') { btnColor13 = ButtonColor.Secondary; btnStyle13 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ы') { btnColor14 = ButtonColor.Secondary; btnStyle14 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'В') { btnColor15 = ButtonColor.Secondary; btnStyle15 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'А') { btnColor16 = ButtonColor.Secondary; btnStyle16 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'П') { btnColor17 = ButtonColor.Secondary; btnStyle17 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Р') { btnColor18 = ButtonColor.Secondary; btnStyle18 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'О') { btnColor19 = ButtonColor.Secondary; btnStyle19 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Л') { btnColor20 = ButtonColor.Secondary; btnStyle20 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Д') { btnColor21 = ButtonColor.Secondary; btnStyle21 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ж') { btnColor22 = ButtonColor.Secondary; btnStyle22 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Э') { btnColor23 = ButtonColor.Secondary; btnStyle23 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Я') { btnColor24 = ButtonColor.Secondary; btnStyle24 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ч') { btnColor25 = ButtonColor.Secondary; btnStyle25 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'С') { btnColor26 = ButtonColor.Secondary; btnStyle26 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'М') { btnColor27 = ButtonColor.Secondary; btnStyle27 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'И') { btnColor28 = ButtonColor.Secondary; btnStyle28 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Т') { btnColor29 = ButtonColor.Secondary; btnStyle29 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ь') { btnColor30 = ButtonColor.Secondary; btnStyle30 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Б') { btnColor31 = ButtonColor.Secondary; btnStyle31 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ю') { btnColor32 = ButtonColor.Secondary; btnStyle32 = "height: 40px; color: white"; }
+                            }
+                        }
+                    }
+                    if (count == 2)
+                    {
+                        if (currentWord[i] == secretWord[i])
+                        {
+                            if (i == 0)
+                            {
+                                btnText121 = currentWord[i].ToString();
+                                btnStyle121 = "width:60px;height:60px;color:black;font-size:34px";
+                                btnColor121 = ButtonColor.Success;
+                            }
+                            if (i == 1)
+                            {
+                                btnText122 = currentWord[i].ToString();
+                                btnStyle122 = "width:60px;height:60px;color:black;font-size:34px";
+                                btnColor122 = ButtonColor.Success;
+                            }
+                            if (i == 2)
+                            {
+                                btnText123 = currentWord[i].ToString();
+                                btnStyle123 = "width:60px;height:60px;color:black;font-size:34px";
+                                btnColor123 = ButtonColor.Success;
+                            }
+                            if (i == 3)
+                            {
+                                btnText124 = currentWord[i].ToString();
+                                btnStyle124 = "width:60px;height:60px;color:black;font-size:34px";
+                                btnColor124 = ButtonColor.Success;
+                            }
+                            if (i == 4)
+                            {
+                                btnText125 = currentWord[i].ToString();
+                                btnStyle125 = "width:60px;height:60px;color:black;font-size:34px";
+                                btnColor125 = ButtonColor.Success;
+                            }
+                            if (currentWord[i] == 'Й') { btnColor1 = ButtonColor.Warning; btnStyle1 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ц') { btnColor2 = ButtonColor.Warning; btnStyle2 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'У') { btnColor3 = ButtonColor.Warning; btnStyle3 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'К') { btnColor4 = ButtonColor.Warning; btnStyle4 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Е') { btnColor5 = ButtonColor.Warning; btnStyle5 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Н') { btnColor6 = ButtonColor.Warning; btnStyle6 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Г') { btnColor7 = ButtonColor.Warning; btnStyle7 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ш') { btnColor8 = ButtonColor.Warning; btnStyle8 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Щ') { btnColor9 = ButtonColor.Warning; btnStyle9 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'З') { btnColor10 = ButtonColor.Warning; btnStyle10 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Х') { btnColor11 = ButtonColor.Warning; btnStyle11 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ъ') { btnColor12 = ButtonColor.Warning; btnStyle12 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ф') { btnColor13 = ButtonColor.Warning; btnStyle13 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ы') { btnColor14 = ButtonColor.Warning; btnStyle14 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'В') { btnColor15 = ButtonColor.Warning; btnStyle15 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'А') { btnColor16 = ButtonColor.Warning; btnStyle16 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'П') { btnColor17 = ButtonColor.Warning; btnStyle17 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Р') { btnColor18 = ButtonColor.Warning; btnStyle18 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'О') { btnColor19 = ButtonColor.Warning; btnStyle19 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Л') { btnColor20 = ButtonColor.Warning; btnStyle20 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Д') { btnColor21 = ButtonColor.Warning; btnStyle21 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ж') { btnColor22 = ButtonColor.Warning; btnStyle22 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Э') { btnColor23 = ButtonColor.Warning; btnStyle23 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Я') { btnColor24 = ButtonColor.Warning; btnStyle24 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ч') { btnColor25 = ButtonColor.Warning; btnStyle25 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'С') { btnColor26 = ButtonColor.Warning; btnStyle26 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'М') { btnColor27 = ButtonColor.Warning; btnStyle27 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'И') { btnColor28 = ButtonColor.Warning; btnStyle28 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Т') { btnColor29 = ButtonColor.Warning; btnStyle29 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ь') { btnColor30 = ButtonColor.Warning; btnStyle30 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Б') { btnColor31 = ButtonColor.Warning; btnStyle31 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ю') { btnColor32 = ButtonColor.Warning; btnStyle32 = "height: 40px; color: black"; }
+                        }
+                        else
+                        {
+                            if (secretWord.Contains(currentWord[i]))
+                            {
+                                if (i == 0)
+                                {
+                                    btnText121 = currentWord[i].ToString();
+                                    btnStyle121 = "width:60px;height:60px;color:black;font-size:34px";
+                                    btnColor121 = ButtonColor.Warning;
+                                }
+                                if (i == 1)
+                                {
+                                    btnText122 = currentWord[i].ToString();
+                                    btnStyle122 = "width:60px;height:60px;color:black;font-size:34px";
+                                    btnColor122 = ButtonColor.Warning;
+                                }
+                                if (i == 2)
+                                {
+                                    btnText123 = currentWord[i].ToString();
+                                    btnStyle123 = "width:60px;height:60px;color:black;font-size:34px";
+                                    btnColor123 = ButtonColor.Warning;
+                                }
+                                if (i == 3)
+                                {
+                                    btnText124 = currentWord[i].ToString();
+                                    btnStyle124 = "width:60px;height:60px;color:black;font-size:34px";
+                                    btnColor124 = ButtonColor.Warning;
+                                }
+                                if (i == 4)
+                                {
+                                    btnText125 = currentWord[i].ToString();
+                                    btnStyle125 = "width:60px;height:60px;color:black;font-size:34px";
+                                    btnColor125 = ButtonColor.Warning;
+                                }
+                                if (currentWord[i] == 'Й') { btnColor1 = ButtonColor.Warning; btnStyle1 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ц') { btnColor2 = ButtonColor.Warning; btnStyle2 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'У') { btnColor3 = ButtonColor.Warning; btnStyle3 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'К') { btnColor4 = ButtonColor.Warning; btnStyle4 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Е') { btnColor5 = ButtonColor.Warning; btnStyle5 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Н') { btnColor6 = ButtonColor.Warning; btnStyle6 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Г') { btnColor7 = ButtonColor.Warning; btnStyle7 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ш') { btnColor8 = ButtonColor.Warning; btnStyle8 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Щ') { btnColor9 = ButtonColor.Warning; btnStyle9 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'З') { btnColor10 = ButtonColor.Warning; btnStyle10 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Х') { btnColor11 = ButtonColor.Warning; btnStyle11 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ъ') { btnColor12 = ButtonColor.Warning; btnStyle12 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ф') { btnColor13 = ButtonColor.Warning; btnStyle13 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ы') { btnColor14 = ButtonColor.Warning; btnStyle14 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'В') { btnColor15 = ButtonColor.Warning; btnStyle15 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'А') { btnColor16 = ButtonColor.Warning; btnStyle16 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'П') { btnColor17 = ButtonColor.Warning; btnStyle17 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Р') { btnColor18 = ButtonColor.Warning; btnStyle18 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'О') { btnColor19 = ButtonColor.Warning; btnStyle19 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Л') { btnColor20 = ButtonColor.Warning; btnStyle20 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Д') { btnColor21 = ButtonColor.Warning; btnStyle21 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ж') { btnColor22 = ButtonColor.Warning; btnStyle22 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Э') { btnColor23 = ButtonColor.Warning; btnStyle23 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Я') { btnColor24 = ButtonColor.Warning; btnStyle24 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ч') { btnColor25 = ButtonColor.Warning; btnStyle25 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'С') { btnColor26 = ButtonColor.Warning; btnStyle26 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'М') { btnColor27 = ButtonColor.Warning; btnStyle27 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'И') { btnColor28 = ButtonColor.Warning; btnStyle28 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Т') { btnColor29 = ButtonColor.Warning; btnStyle29 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ь') { btnColor30 = ButtonColor.Warning; btnStyle30 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Б') { btnColor31 = ButtonColor.Warning; btnStyle31 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ю') { btnColor32 = ButtonColor.Warning; btnStyle32 = "height: 40px; color: black"; }
+                            }
+                            else if (!secretWord.Contains(currentWord[i]))
+                            {
+                                if (i == 0)
+                                {
+                                    btnText121 = currentWord[i].ToString();
+                                    btnStyle121 = "width:60px;height:60px;color:white;font-size:34px";
+                                    btnColor121 = ButtonColor.Secondary;
+                                }
+                                if (i == 1)
+                                {
+                                    btnText122 = currentWord[i].ToString();
+                                    btnStyle122 = "width:60px;height:60px;color:white;font-size:34px";
+                                    btnColor122 = ButtonColor.Secondary;
+                                }
+                                if (i == 2)
+                                {
+                                    btnText123 = currentWord[i].ToString();
+                                    btnStyle123 = "width:60px;height:60px;color:white;font-size:34px";
+                                    btnColor123 = ButtonColor.Secondary;
+                                }
+                                if (i == 3)
+                                {
+                                    btnText124 = currentWord[i].ToString();
+                                    btnStyle124 = "width:60px;height:60px;color:white;font-size:34px";
+                                    btnColor124 = ButtonColor.Secondary;
+                                }
+                                if (i == 4)
+                                {
+                                    btnText125 = currentWord[i].ToString();
+                                    btnStyle125 = "width:60px;height:60px;color:white;font-size:34px";
+                                    btnColor125 = ButtonColor.Secondary;
+                                }
+                                if (currentWord[i] == 'Й') { btnColor1 = ButtonColor.Secondary; btnStyle1 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ц') { btnColor2 = ButtonColor.Secondary; btnStyle2 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'У') { btnColor3 = ButtonColor.Secondary; btnStyle3 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'К') { btnColor4 = ButtonColor.Secondary; btnStyle4 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Е') { btnColor5 = ButtonColor.Secondary; btnStyle5 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Н') { btnColor6 = ButtonColor.Secondary; btnStyle6 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Г') { btnColor7 = ButtonColor.Secondary; btnStyle7 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ш') { btnColor8 = ButtonColor.Secondary; btnStyle8 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Щ') { btnColor9 = ButtonColor.Secondary; btnStyle9 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'З') { btnColor10 = ButtonColor.Secondary; btnStyle10 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Х') { btnColor11 = ButtonColor.Secondary; btnStyle11 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ъ') { btnColor12 = ButtonColor.Secondary; btnStyle12 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ф') { btnColor13 = ButtonColor.Secondary; btnStyle13 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ы') { btnColor14 = ButtonColor.Secondary; btnStyle14 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'В') { btnColor15 = ButtonColor.Secondary; btnStyle15 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'А') { btnColor16 = ButtonColor.Secondary; btnStyle16 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'П') { btnColor17 = ButtonColor.Secondary; btnStyle17 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Р') { btnColor18 = ButtonColor.Secondary; btnStyle18 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'О') { btnColor19 = ButtonColor.Secondary; btnStyle19 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Л') { btnColor20 = ButtonColor.Secondary; btnStyle20 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Д') { btnColor21 = ButtonColor.Secondary; btnStyle21 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ж') { btnColor22 = ButtonColor.Secondary; btnStyle22 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Э') { btnColor23 = ButtonColor.Secondary; btnStyle23 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Я') { btnColor24 = ButtonColor.Secondary; btnStyle24 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ч') { btnColor25 = ButtonColor.Secondary; btnStyle25 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'С') { btnColor26 = ButtonColor.Secondary; btnStyle26 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'М') { btnColor27 = ButtonColor.Secondary; btnStyle27 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'И') { btnColor28 = ButtonColor.Secondary; btnStyle28 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Т') { btnColor29 = ButtonColor.Secondary; btnStyle29 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ь') { btnColor30 = ButtonColor.Secondary; btnStyle30 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Б') { btnColor31 = ButtonColor.Secondary; btnStyle31 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ю') { btnColor32 = ButtonColor.Secondary; btnStyle32 = "height: 40px; color: white"; }
+                            }
+                        }
+                    }
+                    if (count == 3)
+                    {
+                        if (currentWord[i] == secretWord[i])
+                        {
+                            if (i == 0)
+                            {
+                                btnText131 = currentWord[i].ToString();
+                                btnStyle131 = "width:60px;height:60px;color:black;font-size:34px";
+                                btnColor131 = ButtonColor.Success;
+                            }
+                            if (i == 1)
+                            {
+                                btnText132 = currentWord[i].ToString();
+                                btnStyle132 = "width:60px;height:60px;color:black;font-size:34px";
+                                btnColor132 = ButtonColor.Success;
+                            }
+                            if (i == 2)
+                            {
+                                btnText133 = currentWord[i].ToString();
+                                btnStyle133 = "width:60px;height:60px;color:black;font-size:34px";
+                                btnColor133 = ButtonColor.Success;
+                            }
+                            if (i == 3)
+                            {
+                                btnText134 = currentWord[i].ToString();
+                                btnStyle134 = "width:60px;height:60px;color:black;font-size:34px";
+                                btnColor134 = ButtonColor.Success;
+                            }
+                            if (i == 4)
+                            {
+                                btnText135 = currentWord[i].ToString();
+                                btnStyle135 = "width:60px;height:60px;color:black;font-size:34px";
+                                btnColor135 = ButtonColor.Success;
+                            }
+                            if (currentWord[i] == 'Й') { btnColor1 = ButtonColor.Warning; btnStyle1 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ц') { btnColor2 = ButtonColor.Warning; btnStyle2 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'У') { btnColor3 = ButtonColor.Warning; btnStyle3 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'К') { btnColor4 = ButtonColor.Warning; btnStyle4 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Е') { btnColor5 = ButtonColor.Warning; btnStyle5 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Н') { btnColor6 = ButtonColor.Warning; btnStyle6 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Г') { btnColor7 = ButtonColor.Warning; btnStyle7 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ш') { btnColor8 = ButtonColor.Warning; btnStyle8 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Щ') { btnColor9 = ButtonColor.Warning; btnStyle9 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'З') { btnColor10 = ButtonColor.Warning; btnStyle10 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Х') { btnColor11 = ButtonColor.Warning; btnStyle11 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ъ') { btnColor12 = ButtonColor.Warning; btnStyle12 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ф') { btnColor13 = ButtonColor.Warning; btnStyle13 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ы') { btnColor14 = ButtonColor.Warning; btnStyle14 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'В') { btnColor15 = ButtonColor.Warning; btnStyle15 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'А') { btnColor16 = ButtonColor.Warning; btnStyle16 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'П') { btnColor17 = ButtonColor.Warning; btnStyle17 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Р') { btnColor18 = ButtonColor.Warning; btnStyle18 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'О') { btnColor19 = ButtonColor.Warning; btnStyle19 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Л') { btnColor20 = ButtonColor.Warning; btnStyle20 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Д') { btnColor21 = ButtonColor.Warning; btnStyle21 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ж') { btnColor22 = ButtonColor.Warning; btnStyle22 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Э') { btnColor23 = ButtonColor.Warning; btnStyle23 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Я') { btnColor24 = ButtonColor.Warning; btnStyle24 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ч') { btnColor25 = ButtonColor.Warning; btnStyle25 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'С') { btnColor26 = ButtonColor.Warning; btnStyle26 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'М') { btnColor27 = ButtonColor.Warning; btnStyle27 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'И') { btnColor28 = ButtonColor.Warning; btnStyle28 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Т') { btnColor29 = ButtonColor.Warning; btnStyle29 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ь') { btnColor30 = ButtonColor.Warning; btnStyle30 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Б') { btnColor31 = ButtonColor.Warning; btnStyle31 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ю') { btnColor32 = ButtonColor.Warning; btnStyle32 = "height: 40px; color: black"; }
+                        }
+                        else
+                        {
+                            if (secretWord.Contains(currentWord[i]))
+                            {
+                                if (i == 0)
+                                {
+                                    btnText131 = currentWord[i].ToString();
+                                    btnStyle131 = "width:60px;height:60px;color:black;font-size:34px";
+                                    btnColor131 = ButtonColor.Warning;
+                                }
+                                if (i == 1)
+                                {
+                                    btnText132 = currentWord[i].ToString();
+                                    btnStyle132 = "width:60px;height:60px;color:black;font-size:34px";
+                                    btnColor132 = ButtonColor.Warning;
+                                }
+                                if (i == 2)
+                                {
+                                    btnText133 = currentWord[i].ToString();
+                                    btnStyle133 = "width:60px;height:60px;color:black;font-size:34px";
+                                    btnColor133 = ButtonColor.Warning;
+                                }
+                                if (i == 3)
+                                {
+                                    btnText134 = currentWord[i].ToString();
+                                    btnStyle134 = "width:60px;height:60px;color:black;font-size:34px";
+                                    btnColor134 = ButtonColor.Warning;
+                                }
+                                if (i == 4)
+                                {
+                                    btnText135 = currentWord[i].ToString();
+                                    btnStyle135 = "width:60px;height:60px;color:black;font-size:34px";
+                                    btnColor135 = ButtonColor.Warning;
+                                }
+                                if (currentWord[i] == 'Й') { btnColor1 = ButtonColor.Warning; btnStyle1 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ц') { btnColor2 = ButtonColor.Warning; btnStyle2 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'У') { btnColor3 = ButtonColor.Warning; btnStyle3 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'К') { btnColor4 = ButtonColor.Warning; btnStyle4 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Е') { btnColor5 = ButtonColor.Warning; btnStyle5 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Н') { btnColor6 = ButtonColor.Warning; btnStyle6 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Г') { btnColor7 = ButtonColor.Warning; btnStyle7 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ш') { btnColor8 = ButtonColor.Warning; btnStyle8 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Щ') { btnColor9 = ButtonColor.Warning; btnStyle9 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'З') { btnColor10 = ButtonColor.Warning; btnStyle10 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Х') { btnColor11 = ButtonColor.Warning; btnStyle11 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ъ') { btnColor12 = ButtonColor.Warning; btnStyle12 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ф') { btnColor13 = ButtonColor.Warning; btnStyle13 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ы') { btnColor14 = ButtonColor.Warning; btnStyle14 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'В') { btnColor15 = ButtonColor.Warning; btnStyle15 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'А') { btnColor16 = ButtonColor.Warning; btnStyle16 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'П') { btnColor17 = ButtonColor.Warning; btnStyle17 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Р') { btnColor18 = ButtonColor.Warning; btnStyle18 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'О') { btnColor19 = ButtonColor.Warning; btnStyle19 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Л') { btnColor20 = ButtonColor.Warning; btnStyle20 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Д') { btnColor21 = ButtonColor.Warning; btnStyle21 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ж') { btnColor22 = ButtonColor.Warning; btnStyle22 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Э') { btnColor23 = ButtonColor.Warning; btnStyle23 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Я') { btnColor24 = ButtonColor.Warning; btnStyle24 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ч') { btnColor25 = ButtonColor.Warning; btnStyle25 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'С') { btnColor26 = ButtonColor.Warning; btnStyle26 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'М') { btnColor27 = ButtonColor.Warning; btnStyle27 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'И') { btnColor28 = ButtonColor.Warning; btnStyle28 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Т') { btnColor29 = ButtonColor.Warning; btnStyle29 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ь') { btnColor30 = ButtonColor.Warning; btnStyle30 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Б') { btnColor31 = ButtonColor.Warning; btnStyle31 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ю') { btnColor32 = ButtonColor.Warning; btnStyle32 = "height: 40px; color: black"; }
+                            }
+                            else if (!secretWord.Contains(currentWord[i]))
+                            {
+                                if (i == 0)
+                                {
+                                    btnText131 = currentWord[i].ToString();
+                                    btnStyle131 = "width:60px;height:60px;color:white;font-size:34px";
+                                    btnColor131 = ButtonColor.Secondary;
+                                }
+                                if (i == 1)
+                                {
+                                    btnText132 = currentWord[i].ToString();
+                                    btnStyle132 = "width:60px;height:60px;color:white;font-size:34px";
+                                    btnColor132 = ButtonColor.Secondary;
+                                }
+                                if (i == 2)
+                                {
+                                    btnText133 = currentWord[i].ToString();
+                                    btnStyle133 = "width:60px;height:60px;color:white;font-size:34px";
+                                    btnColor133 = ButtonColor.Secondary;
+                                }
+                                if (i == 3)
+                                {
+                                    btnText134 = currentWord[i].ToString();
+                                    btnStyle134 = "width:60px;height:60px;color:white;font-size:34px";
+                                    btnColor134 = ButtonColor.Secondary;
+                                }
+                                if (i == 4)
+                                {
+                                    btnText135 = currentWord[i].ToString();
+                                    btnStyle135 = "width:60px;height:60px;color:white;font-size:34px";
+                                    btnColor135 = ButtonColor.Secondary;
+                                }
+                                if (currentWord[i] == 'Й') { btnColor1 = ButtonColor.Secondary; btnStyle1 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ц') { btnColor2 = ButtonColor.Secondary; btnStyle2 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'У') { btnColor3 = ButtonColor.Secondary; btnStyle3 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'К') { btnColor4 = ButtonColor.Secondary; btnStyle4 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Е') { btnColor5 = ButtonColor.Secondary; btnStyle5 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Н') { btnColor6 = ButtonColor.Secondary; btnStyle6 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Г') { btnColor7 = ButtonColor.Secondary; btnStyle7 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ш') { btnColor8 = ButtonColor.Secondary; btnStyle8 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Щ') { btnColor9 = ButtonColor.Secondary; btnStyle9 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'З') { btnColor10 = ButtonColor.Secondary; btnStyle10 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Х') { btnColor11 = ButtonColor.Secondary; btnStyle11 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ъ') { btnColor12 = ButtonColor.Secondary; btnStyle12 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ф') { btnColor13 = ButtonColor.Secondary; btnStyle13 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ы') { btnColor14 = ButtonColor.Secondary; btnStyle14 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'В') { btnColor15 = ButtonColor.Secondary; btnStyle15 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'А') { btnColor16 = ButtonColor.Secondary; btnStyle16 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'П') { btnColor17 = ButtonColor.Secondary; btnStyle17 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Р') { btnColor18 = ButtonColor.Secondary; btnStyle18 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'О') { btnColor19 = ButtonColor.Secondary; btnStyle19 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Л') { btnColor20 = ButtonColor.Secondary; btnStyle20 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Д') { btnColor21 = ButtonColor.Secondary; btnStyle21 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ж') { btnColor22 = ButtonColor.Secondary; btnStyle22 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Э') { btnColor23 = ButtonColor.Secondary; btnStyle23 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Я') { btnColor24 = ButtonColor.Secondary; btnStyle24 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ч') { btnColor25 = ButtonColor.Secondary; btnStyle25 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'С') { btnColor26 = ButtonColor.Secondary; btnStyle26 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'М') { btnColor27 = ButtonColor.Secondary; btnStyle27 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'И') { btnColor28 = ButtonColor.Secondary; btnStyle28 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Т') { btnColor29 = ButtonColor.Secondary; btnStyle29 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ь') { btnColor30 = ButtonColor.Secondary; btnStyle30 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Б') { btnColor31 = ButtonColor.Secondary; btnStyle31 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ю') { btnColor32 = ButtonColor.Secondary; btnStyle32 = "height: 40px; color: white"; }
+                            }
+                        }
+
+                    }
+                    if (count == 4)
+                    {
+                        if (currentWord[i] == secretWord[i])
+                        {
+                            if (i == 0)
+                            {
+                                btnText141 = currentWord[i].ToString();
+                                btnStyle141 = "width:60px;height:60px;color:black;font-size:34px";
+                                btnColor141 = ButtonColor.Success;
+                            }
+                            if (i == 1)
+                            {
+                                btnText142 = currentWord[i].ToString();
+                                btnStyle142 = "width:60px;height:60px;color:black;font-size:34px";
+                                btnColor142 = ButtonColor.Success;
+                            }
+                            if (i == 2)
+                            {
+                                btnText143 = currentWord[i].ToString();
+                                btnStyle143 = "width:60px;height:60px;color:black;font-size:34px";
+                                btnColor143 = ButtonColor.Success;
+                            }
+                            if (i == 3)
+                            {
+                                btnText144 = currentWord[i].ToString();
+                                btnStyle144 = "width:60px;height:60px;color:black;font-size:34px";
+                                btnColor144 = ButtonColor.Success;
+                            }
+                            if (i == 4)
+                            {
+                                btnText145 = currentWord[i].ToString();
+                                btnStyle145 = "width:60px;height:60px;color:black;font-size:34px";
+                                btnColor145 = ButtonColor.Success;
+                            }
+                            if (currentWord[i] == 'Й') { btnColor1 = ButtonColor.Warning; btnStyle1 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ц') { btnColor2 = ButtonColor.Warning; btnStyle2 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'У') { btnColor3 = ButtonColor.Warning; btnStyle3 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'К') { btnColor4 = ButtonColor.Warning; btnStyle4 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Е') { btnColor5 = ButtonColor.Warning; btnStyle5 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Н') { btnColor6 = ButtonColor.Warning; btnStyle6 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Г') { btnColor7 = ButtonColor.Warning; btnStyle7 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ш') { btnColor8 = ButtonColor.Warning; btnStyle8 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Щ') { btnColor9 = ButtonColor.Warning; btnStyle9 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'З') { btnColor10 = ButtonColor.Warning; btnStyle10 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Х') { btnColor11 = ButtonColor.Warning; btnStyle11 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ъ') { btnColor12 = ButtonColor.Warning; btnStyle12 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ф') { btnColor13 = ButtonColor.Warning; btnStyle13 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ы') { btnColor14 = ButtonColor.Warning; btnStyle14 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'В') { btnColor15 = ButtonColor.Warning; btnStyle15 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'А') { btnColor16 = ButtonColor.Warning; btnStyle16 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'П') { btnColor17 = ButtonColor.Warning; btnStyle17 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Р') { btnColor18 = ButtonColor.Warning; btnStyle18 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'О') { btnColor19 = ButtonColor.Warning; btnStyle19 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Л') { btnColor20 = ButtonColor.Warning; btnStyle20 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Д') { btnColor21 = ButtonColor.Warning; btnStyle21 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ж') { btnColor22 = ButtonColor.Warning; btnStyle22 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Э') { btnColor23 = ButtonColor.Warning; btnStyle23 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Я') { btnColor24 = ButtonColor.Warning; btnStyle24 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ч') { btnColor25 = ButtonColor.Warning; btnStyle25 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'С') { btnColor26 = ButtonColor.Warning; btnStyle26 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'М') { btnColor27 = ButtonColor.Warning; btnStyle27 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'И') { btnColor28 = ButtonColor.Warning; btnStyle28 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Т') { btnColor29 = ButtonColor.Warning; btnStyle29 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ь') { btnColor30 = ButtonColor.Warning; btnStyle30 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Б') { btnColor31 = ButtonColor.Warning; btnStyle31 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ю') { btnColor32 = ButtonColor.Warning; btnStyle32 = "height: 40px; color: black"; }
+                        }
+                        else
+                        {
+                            if (secretWord.Contains(currentWord[i]))
+                            {
+                                if (i == 0)
+                                {
+                                    btnText141 = currentWord[i].ToString();
+                                    btnStyle141 = "width:60px;height:60px;color:black;font-size:34px";
+                                    btnColor141 = ButtonColor.Warning;
+                                }
+                                if (i == 1)
+                                {
+                                    btnText142 = currentWord[i].ToString();
+                                    btnStyle142 = "width:60px;height:60px;color:black;font-size:34px";
+                                    btnColor142 = ButtonColor.Warning;
+                                }
+                                if (i == 2)
+                                {
+                                    btnText143 = currentWord[i].ToString();
+                                    btnStyle143 = "width:60px;height:60px;color:black;font-size:34px";
+                                    btnColor143 = ButtonColor.Warning;
+                                }
+                                if (i == 3)
+                                {
+                                    btnText144 = currentWord[i].ToString();
+                                    btnStyle144 = "width:60px;height:60px;color:black;font-size:34px";
+                                    btnColor144 = ButtonColor.Warning;
+                                }
+                                if (i == 4)
+                                {
+                                    btnText145 = currentWord[i].ToString();
+                                    btnStyle145 = "width:60px;height:60px;color:black;font-size:34px";
+                                    btnColor145 = ButtonColor.Warning;
+                                }
+                                if (currentWord[i] == 'Й') { btnColor1 = ButtonColor.Warning; btnStyle1 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ц') { btnColor2 = ButtonColor.Warning; btnStyle2 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'У') { btnColor3 = ButtonColor.Warning; btnStyle3 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'К') { btnColor4 = ButtonColor.Warning; btnStyle4 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Е') { btnColor5 = ButtonColor.Warning; btnStyle5 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Н') { btnColor6 = ButtonColor.Warning; btnStyle6 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Г') { btnColor7 = ButtonColor.Warning; btnStyle7 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ш') { btnColor8 = ButtonColor.Warning; btnStyle8 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Щ') { btnColor9 = ButtonColor.Warning; btnStyle9 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'З') { btnColor10 = ButtonColor.Warning; btnStyle10 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Х') { btnColor11 = ButtonColor.Warning; btnStyle11 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ъ') { btnColor12 = ButtonColor.Warning; btnStyle12 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ф') { btnColor13 = ButtonColor.Warning; btnStyle13 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ы') { btnColor14 = ButtonColor.Warning; btnStyle14 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'В') { btnColor15 = ButtonColor.Warning; btnStyle15 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'А') { btnColor16 = ButtonColor.Warning; btnStyle16 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'П') { btnColor17 = ButtonColor.Warning; btnStyle17 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Р') { btnColor18 = ButtonColor.Warning; btnStyle18 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'О') { btnColor19 = ButtonColor.Warning; btnStyle19 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Л') { btnColor20 = ButtonColor.Warning; btnStyle20 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Д') { btnColor21 = ButtonColor.Warning; btnStyle21 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ж') { btnColor22 = ButtonColor.Warning; btnStyle22 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Э') { btnColor23 = ButtonColor.Warning; btnStyle23 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Я') { btnColor24 = ButtonColor.Warning; btnStyle24 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ч') { btnColor25 = ButtonColor.Warning; btnStyle25 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'С') { btnColor26 = ButtonColor.Warning; btnStyle26 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'М') { btnColor27 = ButtonColor.Warning; btnStyle27 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'И') { btnColor28 = ButtonColor.Warning; btnStyle28 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Т') { btnColor29 = ButtonColor.Warning; btnStyle29 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ь') { btnColor30 = ButtonColor.Warning; btnStyle30 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Б') { btnColor31 = ButtonColor.Warning; btnStyle31 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ю') { btnColor32 = ButtonColor.Warning; btnStyle32 = "height: 40px; color: black"; }
+                            }
+                            else if (!secretWord.Contains(currentWord[i]))
+                            {
+                                if (i == 0)
+                                {
+                                    btnText141 = currentWord[i].ToString();
+                                    btnStyle141 = "width:60px;height:60px;color:white;font-size:34px";
+                                    btnColor141 = ButtonColor.Secondary;
+                                }
+                                if (i == 1)
+                                {
+                                    btnText142 = currentWord[i].ToString();
+                                    btnStyle142 = "width:60px;height:60px;color:white;font-size:34px";
+                                    btnColor142 = ButtonColor.Secondary;
+                                }
+                                if (i == 2)
+                                {
+                                    btnText143 = currentWord[i].ToString();
+                                    btnStyle143 = "width:60px;height:60px;color:white;font-size:34px";
+                                    btnColor143 = ButtonColor.Secondary;
+                                }
+                                if (i == 3)
+                                {
+                                    btnText144 = currentWord[i].ToString();
+                                    btnStyle144 = "width:60px;height:60px;color:white;font-size:34px";
+                                    btnColor144 = ButtonColor.Secondary;
+                                }
+                                if (i == 4)
+                                {
+                                    btnText145 = currentWord[i].ToString();
+                                    btnStyle145 = "width:60px;height:60px;color:white;font-size:34px";
+                                    btnColor145 = ButtonColor.Secondary;
+                                }
+                                if (currentWord[i] == 'Й') { btnColor1 = ButtonColor.Secondary; btnStyle1 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ц') { btnColor2 = ButtonColor.Secondary; btnStyle2 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'У') { btnColor3 = ButtonColor.Secondary; btnStyle3 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'К') { btnColor4 = ButtonColor.Secondary; btnStyle4 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Е') { btnColor5 = ButtonColor.Secondary; btnStyle5 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Н') { btnColor6 = ButtonColor.Secondary; btnStyle6 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Г') { btnColor7 = ButtonColor.Secondary; btnStyle7 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ш') { btnColor8 = ButtonColor.Secondary; btnStyle8 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Щ') { btnColor9 = ButtonColor.Secondary; btnStyle9 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'З') { btnColor10 = ButtonColor.Secondary; btnStyle10 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Х') { btnColor11 = ButtonColor.Secondary; btnStyle11 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ъ') { btnColor12 = ButtonColor.Secondary; btnStyle12 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ф') { btnColor13 = ButtonColor.Secondary; btnStyle13 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ы') { btnColor14 = ButtonColor.Secondary; btnStyle14 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'В') { btnColor15 = ButtonColor.Secondary; btnStyle15 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'А') { btnColor16 = ButtonColor.Secondary; btnStyle16 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'П') { btnColor17 = ButtonColor.Secondary; btnStyle17 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Р') { btnColor18 = ButtonColor.Secondary; btnStyle18 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'О') { btnColor19 = ButtonColor.Secondary; btnStyle19 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Л') { btnColor20 = ButtonColor.Secondary; btnStyle20 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Д') { btnColor21 = ButtonColor.Secondary; btnStyle21 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ж') { btnColor22 = ButtonColor.Secondary; btnStyle22 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Э') { btnColor23 = ButtonColor.Secondary; btnStyle23 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Я') { btnColor24 = ButtonColor.Secondary; btnStyle24 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ч') { btnColor25 = ButtonColor.Secondary; btnStyle25 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'С') { btnColor26 = ButtonColor.Secondary; btnStyle26 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'М') { btnColor27 = ButtonColor.Secondary; btnStyle27 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'И') { btnColor28 = ButtonColor.Secondary; btnStyle28 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Т') { btnColor29 = ButtonColor.Secondary; btnStyle29 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ь') { btnColor30 = ButtonColor.Secondary; btnStyle30 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Б') { btnColor31 = ButtonColor.Secondary; btnStyle31 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ю') { btnColor32 = ButtonColor.Secondary; btnStyle32 = "height: 40px; color: white"; }
+                            }
+                        }
+                    }
+                    if (count == 5)
+                    {
+                        if (currentWord[i] == secretWord[i])
+                        {
+                            if (i == 0)
+                            {
+                                btnText151 = currentWord[i].ToString();
+                                btnStyle151 = "width:60px;height:60px;color:black;font-size:34px";
+                                btnColor151 = ButtonColor.Success;
+                            }
+                            if (i == 1)
+                            {
+                                btnText152 = currentWord[i].ToString();
+                                btnStyle152 = "width:60px;height:60px;color:black;font-size:34px";
+                                btnColor152 = ButtonColor.Success;
+                            }
+                            if (i == 2)
+                            {
+                                btnText153 = currentWord[i].ToString();
+                                btnStyle153 = "width:60px;height:60px;color:black;font-size:34px";
+                                btnColor153 = ButtonColor.Success;
+                            }
+                            if (i == 3)
+                            {
+                                btnText154 = currentWord[i].ToString();
+                                btnStyle154 = "width:60px;height:60px;color:black;font-size:34px";
+                                btnColor154 = ButtonColor.Success;
+                            }
+                            if (i == 4)
+                            {
+                                btnText155 = currentWord[i].ToString();
+                                btnStyle155 = "width:60px;height:60px;color:black;font-size:34px";
+                                btnColor155 = ButtonColor.Success;
+                            }
+                            if (currentWord[i] == 'Й') { btnColor1 = ButtonColor.Warning; btnStyle1 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ц') { btnColor2 = ButtonColor.Warning; btnStyle2 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'У') { btnColor3 = ButtonColor.Warning; btnStyle3 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'К') { btnColor4 = ButtonColor.Warning; btnStyle4 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Е') { btnColor5 = ButtonColor.Warning; btnStyle5 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Н') { btnColor6 = ButtonColor.Warning; btnStyle6 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Г') { btnColor7 = ButtonColor.Warning; btnStyle7 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ш') { btnColor8 = ButtonColor.Warning; btnStyle8 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Щ') { btnColor9 = ButtonColor.Warning; btnStyle9 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'З') { btnColor10 = ButtonColor.Warning; btnStyle10 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Х') { btnColor11 = ButtonColor.Warning; btnStyle11 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ъ') { btnColor12 = ButtonColor.Warning; btnStyle12 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ф') { btnColor13 = ButtonColor.Warning; btnStyle13 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ы') { btnColor14 = ButtonColor.Warning; btnStyle14 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'В') { btnColor15 = ButtonColor.Warning; btnStyle15 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'А') { btnColor16 = ButtonColor.Warning; btnStyle16 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'П') { btnColor17 = ButtonColor.Warning; btnStyle17 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Р') { btnColor18 = ButtonColor.Warning; btnStyle18 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'О') { btnColor19 = ButtonColor.Warning; btnStyle19 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Л') { btnColor20 = ButtonColor.Warning; btnStyle20 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Д') { btnColor21 = ButtonColor.Warning; btnStyle21 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ж') { btnColor22 = ButtonColor.Warning; btnStyle22 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Э') { btnColor23 = ButtonColor.Warning; btnStyle23 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Я') { btnColor24 = ButtonColor.Warning; btnStyle24 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ч') { btnColor25 = ButtonColor.Warning; btnStyle25 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'С') { btnColor26 = ButtonColor.Warning; btnStyle26 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'М') { btnColor27 = ButtonColor.Warning; btnStyle27 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'И') { btnColor28 = ButtonColor.Warning; btnStyle28 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Т') { btnColor29 = ButtonColor.Warning; btnStyle29 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ь') { btnColor30 = ButtonColor.Warning; btnStyle30 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Б') { btnColor31 = ButtonColor.Warning; btnStyle31 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ю') { btnColor32 = ButtonColor.Warning; btnStyle32 = "height: 40px; color: black"; }
+                        }
+                        else
+                        {
+                            if (secretWord.Contains(currentWord[i]))
+                            {
+                                if (i == 0)
+                                {
+                                    btnText151 = currentWord[i].ToString();
+                                    btnStyle151 = "width:60px;height:60px;color:black;font-size:34px";
+                                    btnColor151 = ButtonColor.Warning;
+                                }
+                                if (i == 1)
+                                {
+                                    btnText152 = currentWord[i].ToString();
+                                    btnStyle152 = "width:60px;height:60px;color:black;font-size:34px";
+                                    btnColor152 = ButtonColor.Warning;
+                                }
+                                if (i == 2)
+                                {
+                                    btnText153 = currentWord[i].ToString();
+                                    btnStyle153 = "width:60px;height:60px;color:black;font-size:34px";
+                                    btnColor153 = ButtonColor.Warning;
+                                }
+                                if (i == 3)
+                                {
+                                    btnText154 = currentWord[i].ToString();
+                                    btnStyle154 = "width:60px;height:60px;color:black;font-size:34px";
+                                    btnColor154 = ButtonColor.Warning;
+                                }
+                                if (i == 4)
+                                {
+                                    btnText155 = currentWord[i].ToString();
+                                    btnStyle155 = "width:60px;height:60px;color:black;font-size:34px";
+                                    btnColor155 = ButtonColor.Warning;
+                                }
+                                if (currentWord[i] == 'Й') { btnColor1 = ButtonColor.Warning; btnStyle1 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ц') { btnColor2 = ButtonColor.Warning; btnStyle2 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'У') { btnColor3 = ButtonColor.Warning; btnStyle3 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'К') { btnColor4 = ButtonColor.Warning; btnStyle4 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Е') { btnColor5 = ButtonColor.Warning; btnStyle5 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Н') { btnColor6 = ButtonColor.Warning; btnStyle6 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Г') { btnColor7 = ButtonColor.Warning; btnStyle7 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ш') { btnColor8 = ButtonColor.Warning; btnStyle8 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Щ') { btnColor9 = ButtonColor.Warning; btnStyle9 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'З') { btnColor10 = ButtonColor.Warning; btnStyle10 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Х') { btnColor11 = ButtonColor.Warning; btnStyle11 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ъ') { btnColor12 = ButtonColor.Warning; btnStyle12 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ф') { btnColor13 = ButtonColor.Warning; btnStyle13 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ы') { btnColor14 = ButtonColor.Warning; btnStyle14 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'В') { btnColor15 = ButtonColor.Warning; btnStyle15 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'А') { btnColor16 = ButtonColor.Warning; btnStyle16 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'П') { btnColor17 = ButtonColor.Warning; btnStyle17 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Р') { btnColor18 = ButtonColor.Warning; btnStyle18 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'О') { btnColor19 = ButtonColor.Warning; btnStyle19 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Л') { btnColor20 = ButtonColor.Warning; btnStyle20 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Д') { btnColor21 = ButtonColor.Warning; btnStyle21 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ж') { btnColor22 = ButtonColor.Warning; btnStyle22 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Э') { btnColor23 = ButtonColor.Warning; btnStyle23 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Я') { btnColor24 = ButtonColor.Warning; btnStyle24 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ч') { btnColor25 = ButtonColor.Warning; btnStyle25 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'С') { btnColor26 = ButtonColor.Warning; btnStyle26 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'М') { btnColor27 = ButtonColor.Warning; btnStyle27 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'И') { btnColor28 = ButtonColor.Warning; btnStyle28 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Т') { btnColor29 = ButtonColor.Warning; btnStyle29 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ь') { btnColor30 = ButtonColor.Warning; btnStyle30 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Б') { btnColor31 = ButtonColor.Warning; btnStyle31 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ю') { btnColor32 = ButtonColor.Warning; btnStyle32 = "height: 40px; color: black"; }
+                            }
+                            else if (!secretWord.Contains(currentWord[i]))
+                            {
+                                if (i == 0)
+                                {
+                                    btnText151 = currentWord[i].ToString();
+                                    btnStyle151 = "width:60px;height:60px;color:white;font-size:34px";
+                                    btnColor151 = ButtonColor.Secondary;
+                                }
+                                if (i == 1)
+                                {
+                                    btnText152 = currentWord[i].ToString();
+                                    btnStyle152 = "width:60px;height:60px;color:white;font-size:34px";
+                                    btnColor152 = ButtonColor.Secondary;
+                                }
+                                if (i == 2)
+                                {
+                                    btnText153 = currentWord[i].ToString();
+                                    btnStyle153 = "width:60px;height:60px;color:white;font-size:34px";
+                                    btnColor153 = ButtonColor.Secondary;
+                                }
+                                if (i == 3)
+                                {
+                                    btnText154 = currentWord[i].ToString();
+                                    btnStyle154 = "width:60px;height:60px;color:white;font-size:34px";
+                                    btnColor154 = ButtonColor.Secondary;
+                                }
+                                if (i == 4)
+                                {
+                                    btnText155 = currentWord[i].ToString();
+                                    btnStyle155 = "width:60px;height:60px;color:white;font-size:34px";
+                                    btnColor155 = ButtonColor.Secondary;
+                                }
+                                if (currentWord[i] == 'Й') { btnColor1 = ButtonColor.Secondary; btnStyle1 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ц') { btnColor2 = ButtonColor.Secondary; btnStyle2 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'У') { btnColor3 = ButtonColor.Secondary; btnStyle3 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'К') { btnColor4 = ButtonColor.Secondary; btnStyle4 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Е') { btnColor5 = ButtonColor.Secondary; btnStyle5 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Н') { btnColor6 = ButtonColor.Secondary; btnStyle6 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Г') { btnColor7 = ButtonColor.Secondary; btnStyle7 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ш') { btnColor8 = ButtonColor.Secondary; btnStyle8 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Щ') { btnColor9 = ButtonColor.Secondary; btnStyle9 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'З') { btnColor10 = ButtonColor.Secondary; btnStyle10 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Х') { btnColor11 = ButtonColor.Secondary; btnStyle11 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ъ') { btnColor12 = ButtonColor.Secondary; btnStyle12 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ф') { btnColor13 = ButtonColor.Secondary; btnStyle13 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ы') { btnColor14 = ButtonColor.Secondary; btnStyle14 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'В') { btnColor15 = ButtonColor.Secondary; btnStyle15 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'А') { btnColor16 = ButtonColor.Secondary; btnStyle16 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'П') { btnColor17 = ButtonColor.Secondary; btnStyle17 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Р') { btnColor18 = ButtonColor.Secondary; btnStyle18 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'О') { btnColor19 = ButtonColor.Secondary; btnStyle19 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Л') { btnColor20 = ButtonColor.Secondary; btnStyle20 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Д') { btnColor21 = ButtonColor.Secondary; btnStyle21 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ж') { btnColor22 = ButtonColor.Secondary; btnStyle22 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Э') { btnColor23 = ButtonColor.Secondary; btnStyle23 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Я') { btnColor24 = ButtonColor.Secondary; btnStyle24 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ч') { btnColor25 = ButtonColor.Secondary; btnStyle25 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'С') { btnColor26 = ButtonColor.Secondary; btnStyle26 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'М') { btnColor27 = ButtonColor.Secondary; btnStyle27 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'И') { btnColor28 = ButtonColor.Secondary; btnStyle28 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Т') { btnColor29 = ButtonColor.Secondary; btnStyle29 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ь') { btnColor30 = ButtonColor.Secondary; btnStyle30 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Б') { btnColor31 = ButtonColor.Secondary; btnStyle31 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ю') { btnColor32 = ButtonColor.Secondary; btnStyle32 = "height: 40px; color: white"; }
+                            }
+                        }
+                    }
+                    if (count == 6)
+                    {
+                        if (currentWord[i] == secretWord[i])
+                        {
+                            if (i == 0)
+                            {
+                                btnText161 = currentWord[i].ToString();
+                                btnStyle161 = "width:60px;height:60px;color:black;font-size:34px";
+                                btnColor161 = ButtonColor.Success;
+                            }
+                            if (i == 1)
+                            {
+                                btnText162 = currentWord[i].ToString();
+                                btnStyle162 = "width:60px;height:60px;color:black;font-size:34px";
+                                btnColor162 = ButtonColor.Success;
+                            }
+                            if (i == 2)
+                            {
+                                btnText163 = currentWord[i].ToString();
+                                btnStyle163 = "width:60px;height:60px;color:black;font-size:34px";
+                                btnColor163 = ButtonColor.Success;
+                            }
+                            if (i == 3)
+                            {
+                                btnText164 = currentWord[i].ToString();
+                                btnStyle164 = "width:60px;height:60px;color:black;font-size:34px";
+                                btnColor164 = ButtonColor.Success;
+                            }
+                            if (i == 4)
+                            {
+                                btnText165 = currentWord[i].ToString();
+                                btnStyle165 = "width:60px;height:60px;color:black;font-size:34px";
+                                btnColor165 = ButtonColor.Success;
+                            }
+                            if (currentWord[i] == 'Й') { btnColor1 = ButtonColor.Warning; btnStyle1 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ц') { btnColor2 = ButtonColor.Warning; btnStyle2 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'У') { btnColor3 = ButtonColor.Warning; btnStyle3 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'К') { btnColor4 = ButtonColor.Warning; btnStyle4 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Е') { btnColor5 = ButtonColor.Warning; btnStyle5 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Н') { btnColor6 = ButtonColor.Warning; btnStyle6 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Г') { btnColor7 = ButtonColor.Warning; btnStyle7 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ш') { btnColor8 = ButtonColor.Warning; btnStyle8 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Щ') { btnColor9 = ButtonColor.Warning; btnStyle9 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'З') { btnColor10 = ButtonColor.Warning; btnStyle10 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Х') { btnColor11 = ButtonColor.Warning; btnStyle11 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ъ') { btnColor12 = ButtonColor.Warning; btnStyle12 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ф') { btnColor13 = ButtonColor.Warning; btnStyle13 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ы') { btnColor14 = ButtonColor.Warning; btnStyle14 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'В') { btnColor15 = ButtonColor.Warning; btnStyle15 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'А') { btnColor16 = ButtonColor.Warning; btnStyle16 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'П') { btnColor17 = ButtonColor.Warning; btnStyle17 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Р') { btnColor18 = ButtonColor.Warning; btnStyle18 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'О') { btnColor19 = ButtonColor.Warning; btnStyle19 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Л') { btnColor20 = ButtonColor.Warning; btnStyle20 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Д') { btnColor21 = ButtonColor.Warning; btnStyle21 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ж') { btnColor22 = ButtonColor.Warning; btnStyle22 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Э') { btnColor23 = ButtonColor.Warning; btnStyle23 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Я') { btnColor24 = ButtonColor.Warning; btnStyle24 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ч') { btnColor25 = ButtonColor.Warning; btnStyle25 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'С') { btnColor26 = ButtonColor.Warning; btnStyle26 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'М') { btnColor27 = ButtonColor.Warning; btnStyle27 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'И') { btnColor28 = ButtonColor.Warning; btnStyle28 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Т') { btnColor29 = ButtonColor.Warning; btnStyle29 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ь') { btnColor30 = ButtonColor.Warning; btnStyle30 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Б') { btnColor31 = ButtonColor.Warning; btnStyle31 = "height: 40px; color: black"; }
+                            if (currentWord[i] == 'Ю') { btnColor32 = ButtonColor.Warning; btnStyle32 = "height: 40px; color: black"; }
+                        }
+                        else
+                        {
+                            if (secretWord.Contains(currentWord[i]))
+                            {
+                                if (i == 0)
+                                {
+                                    btnText161 = currentWord[i].ToString();
+                                    btnStyle161 = "width:60px;height:60px;color:black;font-size:34px";
+                                    btnColor161 = ButtonColor.Warning;
+                                }
+                                if (i == 1)
+                                {
+                                    btnText162 = currentWord[i].ToString();
+                                    btnStyle162 = "width:60px;height:60px;color:black;font-size:34px";
+                                    btnColor162 = ButtonColor.Warning;
+                                }
+                                if (i == 2)
+                                {
+                                    btnText163 = currentWord[i].ToString();
+                                    btnStyle163 = "width:60px;height:60px;color:black;font-size:34px";
+                                    btnColor163 = ButtonColor.Warning;
+                                }
+                                if (i == 3)
+                                {
+                                    btnText164 = currentWord[i].ToString();
+                                    btnStyle164 = "width:60px;height:60px;color:black;font-size:34px";
+                                    btnColor164 = ButtonColor.Warning;
+                                }
+                                if (i == 4)
+                                {
+                                    btnText165 = currentWord[i].ToString();
+                                    btnStyle165 = "width:60px;height:60px;color:black;font-size:34px";
+                                    btnColor165 = ButtonColor.Warning;
+                                }
+                                if (currentWord[i] == 'Й') { btnColor1 = ButtonColor.Warning; btnStyle1 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ц') { btnColor2 = ButtonColor.Warning; btnStyle2 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'У') { btnColor3 = ButtonColor.Warning; btnStyle3 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'К') { btnColor4 = ButtonColor.Warning; btnStyle4 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Е') { btnColor5 = ButtonColor.Warning; btnStyle5 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Н') { btnColor6 = ButtonColor.Warning; btnStyle6 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Г') { btnColor7 = ButtonColor.Warning; btnStyle7 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ш') { btnColor8 = ButtonColor.Warning; btnStyle8 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Щ') { btnColor9 = ButtonColor.Warning; btnStyle9 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'З') { btnColor10 = ButtonColor.Warning; btnStyle10 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Х') { btnColor11 = ButtonColor.Warning; btnStyle11 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ъ') { btnColor12 = ButtonColor.Warning; btnStyle12 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ф') { btnColor13 = ButtonColor.Warning; btnStyle13 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ы') { btnColor14 = ButtonColor.Warning; btnStyle14 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'В') { btnColor15 = ButtonColor.Warning; btnStyle15 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'А') { btnColor16 = ButtonColor.Warning; btnStyle16 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'П') { btnColor17 = ButtonColor.Warning; btnStyle17 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Р') { btnColor18 = ButtonColor.Warning; btnStyle18 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'О') { btnColor19 = ButtonColor.Warning; btnStyle19 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Л') { btnColor20 = ButtonColor.Warning; btnStyle20 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Д') { btnColor21 = ButtonColor.Warning; btnStyle21 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ж') { btnColor22 = ButtonColor.Warning; btnStyle22 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Э') { btnColor23 = ButtonColor.Warning; btnStyle23 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Я') { btnColor24 = ButtonColor.Warning; btnStyle24 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ч') { btnColor25 = ButtonColor.Warning; btnStyle25 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'С') { btnColor26 = ButtonColor.Warning; btnStyle26 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'М') { btnColor27 = ButtonColor.Warning; btnStyle27 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'И') { btnColor28 = ButtonColor.Warning; btnStyle28 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Т') { btnColor29 = ButtonColor.Warning; btnStyle29 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ь') { btnColor30 = ButtonColor.Warning; btnStyle30 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Б') { btnColor31 = ButtonColor.Warning; btnStyle31 = "height: 40px; color: black"; }
+                                if (currentWord[i] == 'Ю') { btnColor32 = ButtonColor.Warning; btnStyle32 = "height: 40px; color: black"; }
+                            }
+                            else if (!secretWord.Contains(currentWord[i]))
+                            {
+                                if (i == 0)
+                                {
+                                    btnText161 = currentWord[i].ToString();
+                                    btnStyle161 = "width:60px;height:60px;color:white;font-size:34px";
+                                    btnColor161 = ButtonColor.Secondary;
+                                }
+                                if (i == 1)
+                                {
+                                    btnText162 = currentWord[i].ToString();
+                                    btnStyle162 = "width:60px;height:60px;color:white;font-size:34px";
+                                    btnColor162 = ButtonColor.Secondary;
+                                }
+                                if (i == 2)
+                                {
+                                    btnText163 = currentWord[i].ToString();
+                                    btnStyle163 = "width:60px;height:60px;color:white;font-size:34px";
+                                    btnColor163 = ButtonColor.Secondary;
+                                }
+                                if (i == 3)
+                                {
+                                    btnText164 = currentWord[i].ToString();
+                                    btnStyle164 = "width:60px;height:60px;color:white;font-size:34px";
+                                    btnColor164 = ButtonColor.Secondary;
+                                }
+                                if (i == 4)
+                                {
+                                    btnText165 = currentWord[i].ToString();
+                                    btnStyle165 = "width:60px;height:60px;color:white;font-size:34px";
+                                    btnColor165 = ButtonColor.Secondary;
+                                }
+                                if (currentWord[i] == 'Й') { btnColor1 = ButtonColor.Secondary; btnStyle1 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ц') { btnColor2 = ButtonColor.Secondary; btnStyle2 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'У') { btnColor3 = ButtonColor.Secondary; btnStyle3 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'К') { btnColor4 = ButtonColor.Secondary; btnStyle4 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Е') { btnColor5 = ButtonColor.Secondary; btnStyle5 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Н') { btnColor6 = ButtonColor.Secondary; btnStyle6 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Г') { btnColor7 = ButtonColor.Secondary; btnStyle7 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ш') { btnColor8 = ButtonColor.Secondary; btnStyle8 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Щ') { btnColor9 = ButtonColor.Secondary; btnStyle9 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'З') { btnColor10 = ButtonColor.Secondary; btnStyle10 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Х') { btnColor11 = ButtonColor.Secondary; btnStyle11 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ъ') { btnColor12 = ButtonColor.Secondary; btnStyle12 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ф') { btnColor13 = ButtonColor.Secondary; btnStyle13 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ы') { btnColor14 = ButtonColor.Secondary; btnStyle14 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'В') { btnColor15 = ButtonColor.Secondary; btnStyle15 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'А') { btnColor16 = ButtonColor.Secondary; btnStyle16 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'П') { btnColor17 = ButtonColor.Secondary; btnStyle17 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Р') { btnColor18 = ButtonColor.Secondary; btnStyle18 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'О') { btnColor19 = ButtonColor.Secondary; btnStyle19 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Л') { btnColor20 = ButtonColor.Secondary; btnStyle20 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Д') { btnColor21 = ButtonColor.Secondary; btnStyle21 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ж') { btnColor22 = ButtonColor.Secondary; btnStyle22 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Э') { btnColor23 = ButtonColor.Secondary; btnStyle23 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Я') { btnColor24 = ButtonColor.Secondary; btnStyle24 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ч') { btnColor25 = ButtonColor.Secondary; btnStyle25 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'С') { btnColor26 = ButtonColor.Secondary; btnStyle26 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'М') { btnColor27 = ButtonColor.Secondary; btnStyle27 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'И') { btnColor28 = ButtonColor.Secondary; btnStyle28 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Т') { btnColor29 = ButtonColor.Secondary; btnStyle29 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ь') { btnColor30 = ButtonColor.Secondary; btnStyle30 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Б') { btnColor31 = ButtonColor.Secondary; btnStyle31 = "height: 40px; color: white"; }
+                                if (currentWord[i] == 'Ю') { btnColor32 = ButtonColor.Secondary; btnStyle32 = "height: 40px; color: white"; }
+                            }
+                        }
+                    }
+                }
+                currentWord = "";
+                count++;
+                if (count == 7) GameOverConfirmation();
+            }
+        }
+    }
+}
