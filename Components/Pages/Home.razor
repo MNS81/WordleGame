@@ -3,6 +3,8 @@
 
 <ConfirmDialog @ref="dialog" />
 
+<h3 style="text-align: center">5 БУКВ</h3>
+
 <table style="margin: 0 auto">
     <tr>
         <td><Button Color="@btnColor111" Size="ButtonSize.Medium" Style="@btnStyle111" Disabled>@btnText111</Button></td>
@@ -85,7 +87,7 @@
     </table>
     <table style="margin: 0 auto;margin-top:2px">
         <tr>
-            <td style="padding-right:2px"><Button Color="ButtonColor.Primary" Size="ButtonSize.ExtraSmall" @onclick="BackSpace" Style="height:40px;width:43px"><Icon Name="IconName.Backspace" Size="IconSize.x5" /></Button></td>
+            <td style="padding-right:2px"><Button Color="ButtonColor.Primary" Size="ButtonSize.ExtraSmall" @onclick="BackSpace" Style="height:40px;width:40px"><Icon Name="IconName.Backspace" Size="IconSize.x5" /></Button></td>
             <td><Button Color="@btnColor24" Size="ButtonSize.ExtraSmall" Style="@btnStyle24" @onclick="() => AddChar('Я')">Я</Button></td>
             <td><Button Color="@btnColor25" Size="ButtonSize.ExtraSmall" Style="@btnStyle25" @onclick="() => AddChar('Ч')">Ч</Button></td>
             <td><Button Color="@btnColor26" Size="ButtonSize.ExtraSmall" Style="@btnStyle26" @onclick="() => AddChar('С')">С</Button></td>
@@ -95,7 +97,7 @@
             <td><Button Color="@btnColor30" Size="ButtonSize.ExtraSmall" Style="@btnStyle30" @onclick="() => AddChar('Ь')">Ь</Button></td>
             <td><Button Color="@btnColor31" Size="ButtonSize.ExtraSmall" Style="@btnStyle31" @onclick="() => AddChar('Б')">Б</Button></td>
             <td><Button Color="@btnColor32" Size="ButtonSize.ExtraSmall" Style="@btnStyle32" @onclick="() => AddChar('Ю')">Ю</Button></td>
-            <td style="padding-left:2px"><Button Color="ButtonColor.Primary" Size="ButtonSize.ExtraSmall" @onclick="CheckWord" Style="height:40px;width:43px"><Icon Name="IconName.BackspaceReverse" Size="IconSize.x5" /></Button></td>
+            <td style="padding-left:2px"><Button Color="ButtonColor.Primary" Size="ButtonSize.ExtraSmall" @onclick="CheckWord" Style="height:40px;width:40px"><Icon Name="IconName.BackspaceReverse" Size="IconSize.x5" /></Button></td>
         </tr>
     </table>
 }
@@ -143,11 +145,14 @@
     </div>
 }
 
-
+<div class="row-mb-3 d-flex justify-content-center" style="padding-top:10px">
+    <label style="text-align: center"><Icon Name="IconName.EmojiSmile"/> - @win &nbsp <Icon Name="IconName.EmojiFrown"/> - @lose &nbsp <Icon Name="IconName.Percent"/> - @percent</label>
+</div>
 
 
 @code {
     [Inject] ModalService ModalService { get; set; } = default!;
+    private string statsFilePath;
     private IAudioManager audioManager;
     private IAudioPlayer audioPlayer;
     private ConfirmDialog dialog = default!;
@@ -156,6 +161,9 @@
     private string currentWord = "";
     List<string> wordsList = new();
     private int count = 1;
+    private int win;
+    private int lose;
+    private double percent;
     private ButtonColor btnColor1 = ButtonColor.Info;
     private ButtonColor btnColor2 = ButtonColor.Info;
     private ButtonColor btnColor3 = ButtonColor.Info;
@@ -313,71 +321,73 @@
 
     protected override void OnInitialized()
     {
+        statsFilePath = Path.Combine(FileSystem.AppDataDirectory, "Stats.json");
+        LoadStats();
 #if ANDROID
         PlaySoundAndroid("newgame.wav");
         isAndroid = true;
-        btnStyle1 = "height:40px;width:28px;color:black;font-size:20px";
-        btnStyle2 = "height:40px;width:28px;color:black;font-size:20px";
-        btnStyle3 = "height:40px;width:28px;color:black;font-size:20px";
-        btnStyle4 = "height:40px;width:28px;color:black;font-size:20px";
-        btnStyle5 = "height:40px;width:28px;color:black;font-size:20px";
-        btnStyle6 = "height:40px;width:28px;color:black;font-size:20px";
-        btnStyle7 = "height:40px;width:28px;color:black;font-size:20px";
-        btnStyle8 = "height:40px;width:28px;color:black;font-size:20px";
-        btnStyle9 = "height:40px;width:28px;color:black;font-size:20px";
-        btnStyle10 = "height:40px;width:28px;color:black;font-size:20px";
-        btnStyle11 = "height:40px;width:28px;color:black;font-size:20px";
-        btnStyle12 = "height:40px;width:28px;color:black;font-size:20px";
-        btnStyle13 = "height:40px;width:28px;color:black;font-size:20px";
-        btnStyle14 = "height:40px;width:28px;color:black;font-size:20px";
-        btnStyle15 = "height:40px;width:28px;color:black;font-size:20px";
-        btnStyle16 = "height:40px;width:28px;color:black;font-size:20px";
-        btnStyle17 = "height:40px;width:28px;color:black;font-size:20px";
-        btnStyle18 = "height:40px;width:28px;color:black;font-size:20px";
-        btnStyle19 = "height:40px;width:28px;color:black;font-size:20px";
-        btnStyle20 = "height:40px;width:28px;color:black;font-size:20px";
-        btnStyle21 = "height:40px;width:28px;color:black;font-size:20px";
-        btnStyle22 = "height:40px;width:28px;color:black;font-size:20px";
-        btnStyle23 = "height:40px;width:28px;color:black;font-size:20px";
-        btnStyle24 = "height:40px;width:28px;color:black;font-size:20px";
-        btnStyle25 = "height:40px;width:28px;color:black;font-size:20px";
-        btnStyle26 = "height:40px;width:28px;color:black;font-size:20px";
-        btnStyle27 = "height:40px;width:28px;color:black;font-size:20px";
-        btnStyle28 = "height:40px;width:28px;color:black;font-size:20px";
-        btnStyle29 = "height:40px;width:28px;color:black;font-size:20px";
-        btnStyle30 = "height:40px;width:28px;color:black;font-size:20px";
-        btnStyle31 = "height:40px;width:28px;color:black;font-size:20px";
-        btnStyle32 = "height:40px;width:28px;color:black;font-size:20px";
-        btnStyle111 = "width:50px;height:50px;color:black;font-size:24px";
-        btnStyle112 = "width:50px;height:50px;color:black;font-size:24px";
-        btnStyle113 = "width:50px;height:50px;color:black;font-size:24px";
-        btnStyle114 = "width:50px;height:50px;color:black;font-size:24px";
-        btnStyle115 = "width:50px;height:50px;color:black;font-size:24px";
-        btnStyle121 = "width:50px;height:50px;color:black;font-size:24px";
-        btnStyle122 = "width:50px;height:50px;color:black;font-size:24px";
-        btnStyle123 = "width:50px;height:50px;color:black;font-size:24px";
-        btnStyle124 = "width:50px;height:50px;color:black;font-size:24px";
-        btnStyle125 = "width:50px;height:50px;color:black;font-size:24px";
-        btnStyle131 = "width:50px;height:50px;color:black;font-size:24px";
-        btnStyle132 = "width:50px;height:50px;color:black;font-size:24px";
-        btnStyle133 = "width:50px;height:50px;color:black;font-size:24px";
-        btnStyle134 = "width:50px;height:50px;color:black;font-size:24px";
-        btnStyle135 = "width:50px;height:50px;color:black;font-size:24px";
-        btnStyle141 = "width:50px;height:50px;color:black;font-size:24px";
-        btnStyle142 = "width:50px;height:50px;color:black;font-size:24px";
-        btnStyle143 = "width:50px;height:50px;color:black;font-size:24px";
-        btnStyle144 = "width:50px;height:50px;color:black;font-size:24px";
-        btnStyle145 = "width:50px;height:50px;color:black;font-size:24px";
-        btnStyle151 = "width:50px;height:50px;color:black;font-size:24px";
-        btnStyle152 = "width:50px;height:50px;color:black;font-size:24px";
-        btnStyle153 = "width:50px;height:50px;color:black;font-size:24px";
-        btnStyle154 = "width:50px;height:50px;color:black;font-size:24px";
-        btnStyle155 = "width:50px;height:50px;color:black;font-size:24px";
-        btnStyle161 = "width:50px;height:50px;color:black;font-size:24px";
-        btnStyle162 = "width:50px;height:50px;color:black;font-size:24px";
-        btnStyle163 = "width:50px;height:50px;color:black;font-size:24px";
-        btnStyle164 = "width:50px;height:50px;color:black;font-size:24px";
-        btnStyle165 = "width:50px;height:50px;color:black;font-size:24px";
+        btnStyle1 = "height:40px;width:25px;color:black;font-size:16px";
+        btnStyle2 = "height:40px;width:25px;color:black;font-size:16px";
+        btnStyle3 = "height:40px;width:25px;color:black;font-size:16px";
+        btnStyle4 = "height:40px;width:25px;color:black;font-size:16px";
+        btnStyle5 = "height:40px;width:25px;color:black;font-size:16px";
+        btnStyle6 = "height:40px;width:25px;color:black;font-size:16px";
+        btnStyle7 = "height:40px;width:25px;color:black;font-size:16px";
+        btnStyle8 = "height:40px;width:25px;color:black;font-size:16px";
+        btnStyle9 = "height:40px;width:25px;color:black;font-size:16px";
+        btnStyle10 = "height:40px;width:25px;color:black;font-size:16px";
+        btnStyle11 = "height:40px;width:25px;color:black;font-size:16px";
+        btnStyle12 = "height:40px;width:25px;color:black;font-size:16px";
+        btnStyle13 = "height:40px;width:25px;color:black;font-size:16px";
+        btnStyle14 = "height:40px;width:25px;color:black;font-size:16px";
+        btnStyle15 = "height:40px;width:25px;color:black;font-size:16px";
+        btnStyle16 = "height:40px;width:25px;color:black;font-size:16px";
+        btnStyle17 = "height:40px;width:25px;color:black;font-size:16px";
+        btnStyle18 = "height:40px;width:25px;color:black;font-size:16px";
+        btnStyle19 = "height:40px;width:25px;color:black;font-size:16px";
+        btnStyle20 = "height:40px;width:25px;color:black;font-size:16px";
+        btnStyle21 = "height:40px;width:25px;color:black;font-size:16px";
+        btnStyle22 = "height:40px;width:25px;color:black;font-size:16px";
+        btnStyle23 = "height:40px;width:25px;color:black;font-size:16px";
+        btnStyle24 = "height:40px;width:25px;color:black;font-size:16px";
+        btnStyle25 = "height:40px;width:25px;color:black;font-size:16px";
+        btnStyle26 = "height:40px;width:25px;color:black;font-size:16px";
+        btnStyle27 = "height:40px;width:25px;color:black;font-size:16px";
+        btnStyle28 = "height:40px;width:25px;color:black;font-size:16px";
+        btnStyle29 = "height:40px;width:25px;color:black;font-size:16px";
+        btnStyle30 = "height:40px;width:25px;color:black;font-size:16px";
+        btnStyle31 = "height:40px;width:25px;color:black;font-size:16px";
+        btnStyle32 = "height:40px;width:25px;color:black;font-size:16px";
+        btnStyle111 = "width:45px;height:45px;color:black;font-size:22px";
+        btnStyle112 = "width:45px;height:45px;color:black;font-size:22px";
+        btnStyle113 = "width:45px;height:45px;color:black;font-size:22px";
+        btnStyle114 = "width:45px;height:45px;color:black;font-size:22px";
+        btnStyle115 = "width:45px;height:45px;color:black;font-size:22px";
+        btnStyle121 = "width:45px;height:45px;color:black;font-size:22px";
+        btnStyle122 = "width:45px;height:45px;color:black;font-size:22px";
+        btnStyle123 = "width:45px;height:45px;color:black;font-size:22px";
+        btnStyle124 = "width:45px;height:45px;color:black;font-size:22px";
+        btnStyle125 = "width:45px;height:45px;color:black;font-size:22px";
+        btnStyle131 = "width:45px;height:45px;color:black;font-size:22px";
+        btnStyle132 = "width:45px;height:45px;color:black;font-size:22px";
+        btnStyle133 = "width:45px;height:45px;color:black;font-size:22px";
+        btnStyle134 = "width:45px;height:45px;color:black;font-size:22px";
+        btnStyle135 = "width:45px;height:45px;color:black;font-size:22px";
+        btnStyle141 = "width:45px;height:45px;color:black;font-size:22px";
+        btnStyle142 = "width:45px;height:45px;color:black;font-size:22px";
+        btnStyle143 = "width:45px;height:45px;color:black;font-size:22px";
+        btnStyle144 = "width:45px;height:45px;color:black;font-size:22px";
+        btnStyle145 = "width:45px;height:45px;color:black;font-size:22px";
+        btnStyle151 = "width:45px;height:45px;color:black;font-size:22px";
+        btnStyle152 = "width:45px;height:45px;color:black;font-size:22px";
+        btnStyle153 = "width:45px;height:45px;color:black;font-size:22px";
+        btnStyle154 = "width:45px;height:45px;color:black;font-size:22px";
+        btnStyle155 = "width:45px;height:45px;color:black;font-size:22px";
+        btnStyle161 = "width:45px;height:45px;color:black;font-size:22px";
+        btnStyle162 = "width:45px;height:45px;color:black;font-size:22px";
+        btnStyle163 = "width:45px;height:45px;color:black;font-size:22px";
+        btnStyle164 = "width:45px;height:45px;color:black;font-size:22px";
+        btnStyle165 = "width:45px;height:45px;color:black;font-size:22px";
 #else
         PlaySoundWindows("newgame.wav");
         isAndroid = false;
@@ -449,6 +459,15 @@
         secretWord = GetNewWord();
     }
 
+    private async Task LoadStats()
+    {
+        string json = File.ReadAllText(statsFilePath);
+        var stats = JsonSerializer.Deserialize<Dictionary<String, int>>(json);
+        win = stats["wins"];
+        lose = stats["loses"];
+        percent = Math.Round((double)win / (win + lose) * 100, 1);
+    }
+
     private async Task ShowModal(ModalType modalType, string title, string msg)
     {
         var modalOption = new ModalOption
@@ -485,6 +504,8 @@
 
     private async Task NewGameConfirmation()
     {
+        win++;
+        SaveStats();
 #if ANDROID
         PlaySoundAndroid("win.wav");
 #else
@@ -501,6 +522,8 @@
 
     private async Task GameOverConfirmation()
     {
+        lose++;
+        SaveStats();
 #if ANDROID
         PlaySoundAndroid("lose.wav");
 #else
@@ -556,7 +579,7 @@
                             {
                                 btnText111 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle111 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle111 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle111 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -566,7 +589,7 @@
                             {
                                 btnText112 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle112 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle112 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle112 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -576,7 +599,7 @@
                             {
                                 btnText113 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle113 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle113 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle113 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -586,7 +609,7 @@
                             {
                                 btnText114 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle114 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle114 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle114 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -596,7 +619,7 @@
                             {
                                 btnText115 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle115 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle115 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle115 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -612,7 +635,7 @@
                                 {
                                     btnText111 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle111 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle111 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle111 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -622,7 +645,7 @@
                                 {
                                     btnText112 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle112 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle112 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle112 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -632,7 +655,7 @@
                                 {
                                     btnText113 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle113 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle113 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle113 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -642,7 +665,7 @@
                                 {
                                     btnText114 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle114 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle114 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle114 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -652,7 +675,7 @@
                                 {
                                     btnText115 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle115 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle115 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle115 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -666,7 +689,7 @@
                                 {
                                     btnText111 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle111 = "width:50px;height:50px;color:white;font-size:24px";;
+                                btnStyle111 = "width:45px;height:45px;color:white;font-size:22px";;
 #else
                                 btnStyle111 = "width:60px;height:60px;color:white;font-size:34px";
 #endif
@@ -676,7 +699,7 @@
                                 {
                                     btnText112 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle112 = "width:50px;height:50px;color:white;font-size:24px";;
+                                btnStyle112 = "width:45px;height:45px;color:white;font-size:22px";;
 #else
                                 btnStyle112 = "width:60px;height:60px;color:white;font-size:34px";
 #endif
@@ -686,7 +709,7 @@
                                 {
                                     btnText113 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle113 = "width:50px;height:50px;color:white;font-size:24px";;
+                                btnStyle113 = "width:45px;height:45px;color:white;font-size:22px";;
 #else
                                 btnStyle113 = "width:60px;height:60px;color:white;font-size:34px";
 #endif
@@ -696,7 +719,7 @@
                                 {
                                     btnText114 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle114 = "width:50px;height:50px;color:white;font-size:24px";;
+                                btnStyle114 = "width:45px;height:45px;color:white;font-size:22px";;
 #else
                                 btnStyle114 = "width:60px;height:60px;color:white;font-size:34px";
 #endif
@@ -706,7 +729,7 @@
                                 {
                                     btnText115 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle115 = "width:50px;height:50px;color:white;font-size:24px";;
+                                btnStyle115 = "width:45px;height:45px;color:white;font-size:22px";;
 #else
                                 btnStyle115 = "width:60px;height:60px;color:white;font-size:34px";
 #endif
@@ -724,7 +747,7 @@
                             {
                                 btnText121 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle121 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle121 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle121 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -734,7 +757,7 @@
                             {
                                 btnText122 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle122 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle122 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle122 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -744,7 +767,7 @@
                             {
                                 btnText123 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle123 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle123 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle123 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -754,7 +777,7 @@
                             {
                                 btnText124 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle124 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle124 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle124 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -764,7 +787,7 @@
                             {
                                 btnText125 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle125 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle125 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle125 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -780,7 +803,7 @@
                                 {
                                     btnText121 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle121 = "width:50px;height:50px;color:black;font-size:24px";;
+                                    btnStyle121 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                     btnStyle121 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -790,7 +813,7 @@
                                 {
                                     btnText122 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle122 = "width:50px;height:50px;color:black;font-size:24px";;
+                                    btnStyle122 = "width:45px;height:45px;color:black;font-size:22px";;
 #else   
                                     btnStyle122 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -800,7 +823,7 @@
                                 {
                                     btnText123 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle123 = "width:50px;height:50px;color:black;font-size:24px";;
+                                    btnStyle123 = "width:45px;height:45px;color:black;font-size:22px";;
 #else   
                                     btnStyle123 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -810,7 +833,7 @@
                                 {
                                     btnText124 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle124 = "width:50px;height:50px;color:black;font-size:24px";;
+                                    btnStyle124 = "width:45px;height:45px;color:black;font-size:22px";;
 #else   
                                     btnStyle124 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -820,7 +843,7 @@
                                 {
                                     btnText125 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle125 = "width:50px;height:50px;color:black;font-size:24px";;
+                                    btnStyle125 = "width:45px;height:45px;color:black;font-size:22px";;
 #else   
                                     btnStyle125 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -834,7 +857,7 @@
                                 {
                                     btnText121 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle121 = "width:50px;height:50px;color:white;font-size:24px";;
+                                    btnStyle121 = "width:45px;height:45px;color:white;font-size:22px";;
 #else   
                                     btnStyle121 = "width:60px;height:60px;color:white;font-size:34px";
 #endif
@@ -844,7 +867,7 @@
                                 {
                                     btnText122 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle122 = "width:50px;height:50px;color:white;font-size:24px";;
+                                    btnStyle122 = "width:45px;height:45px;color:white;font-size:22px";;
 #else   
                                     btnStyle122 = "width:60px;height:60px;color:white;font-size:34px";
 #endif
@@ -854,7 +877,7 @@
                                 {
                                     btnText123 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle123 = "width:50px;height:50px;color:white;font-size:24px";;
+                                    btnStyle123 = "width:45px;height:45px;color:white;font-size:22px";;
 #else   
                                     btnStyle123 = "width:60px;height:60px;color:white;font-size:34px";
 #endif
@@ -864,7 +887,7 @@
                                 {
                                     btnText124 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle124 = "width:50px;height:50px;color:white;font-size:24px";;
+                                    btnStyle124 = "width:45px;height:45px;color:white;font-size:22px";;
 #else   
                                     btnStyle124 = "width:60px;height:60px;color:white;font-size:34px";
 #endif
@@ -874,7 +897,7 @@
                                 {
                                     btnText125 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle125 = "width:50px;height:50px;color:white;font-size:24px";;
+                                    btnStyle125 = "width:45px;height:45px;color:white;font-size:22px";;
 #else   
                                     btnStyle125 = "width:60px;height:60px;color:white;font-size:34px";
 #endif
@@ -892,7 +915,7 @@
                             {
                                 btnText131 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle131 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle131 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle131 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -902,7 +925,7 @@
                             {
                                 btnText132 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle132 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle132 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle132 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -912,7 +935,7 @@
                             {
                                 btnText133 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle133 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle133 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle133 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -922,7 +945,7 @@
                             {
                                 btnText134 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle134 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle134 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle134 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -932,7 +955,7 @@
                             {
                                 btnText135 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle135 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle135 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle135 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -948,7 +971,7 @@
                                 {
                                     btnText131 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle131 = "width:50px;height:50px;color:black;font-size:24px";;
+                                    btnStyle131 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                     btnStyle131 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -958,7 +981,7 @@
                                 {
                                     btnText132 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle132 = "width:50px;height:50px;color:black;font-size:24px";;
+                                    btnStyle132 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                     btnStyle132 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -968,7 +991,7 @@
                                 {
                                     btnText133 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle133 = "width:50px;height:50px;color:black;font-size:24px";;
+                                    btnStyle133 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                     btnStyle133 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -978,7 +1001,7 @@
                                 {
                                     btnText134 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle134 = "width:50px;height:50px;color:black;font-size:24px";;
+                                    btnStyle134 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                     btnStyle134 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -988,7 +1011,7 @@
                                 {
                                     btnText135 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle135 = "width:50px;height:50px;color:black;font-size:24px";;
+                                    btnStyle135 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                     btnStyle135 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -1002,7 +1025,7 @@
                                 {
                                     btnText131 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle131 = "width:50px;height:50px;color:white;font-size:24px";;
+                                    btnStyle131 = "width:45px;height:45px;color:white;font-size:22px";;
 #else
                                     btnStyle131 = "width:60px;height:60px;color:white;font-size:34px";
 #endif
@@ -1012,7 +1035,7 @@
                                 {
                                     btnText132 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle132 = "width:50px;height:50px;color:white;font-size:24px";;
+                                    btnStyle132 = "width:45px;height:45px;color:white;font-size:22px";;
 #else
                                     btnStyle132 = "width:60px;height:60px;color:white;font-size:34px";
 #endif
@@ -1022,7 +1045,7 @@
                                 {
                                     btnText133 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle133 = "width:50px;height:50px;color:white;font-size:24px";;
+                                    btnStyle133 = "width:45px;height:45px;color:white;font-size:22px";;
 #else
                                     btnStyle133 = "width:60px;height:60px;color:white;font-size:34px";
 #endif
@@ -1032,7 +1055,7 @@
                                 {
                                     btnText134 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle134 = "width:50px;height:50px;color:white;font-size:24px";;
+                                    btnStyle134 = "width:45px;height:45px;color:white;font-size:22px";;
 #else
                                     btnStyle134 = "width:60px;height:60px;color:white;font-size:34px";
 #endif
@@ -1042,7 +1065,7 @@
                                 {
                                     btnText135 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle135 = "width:50px;height:50px;color:white;font-size:24px";;
+                                    btnStyle135 = "width:45px;height:45px;color:white;font-size:22px";;
 #else
                                     btnStyle135 = "width:60px;height:60px;color:white;font-size:34px";
 #endif
@@ -1061,7 +1084,7 @@
                             {
                                 btnText141 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle141 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle141 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle141 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -1071,7 +1094,7 @@
                             {
                                 btnText142 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle142 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle142 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle142 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -1081,7 +1104,7 @@
                             {
                                 btnText143 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle143 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle143 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle143 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -1091,7 +1114,7 @@
                             {
                                 btnText144 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle144 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle144 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle144 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -1101,7 +1124,7 @@
                             {
                                 btnText145 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle145 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle145 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle145 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -1117,7 +1140,7 @@
                                 {
                                     btnText141 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle141 = "width:50px;height:50px;color:black;font-size:24px";;
+                                    btnStyle141 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                     btnStyle141 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -1127,7 +1150,7 @@
                                 {
                                     btnText142 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle142 = "width:50px;height:50px;color:black;font-size:24px";;
+                                    btnStyle142 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                     btnStyle142 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -1137,7 +1160,7 @@
                                 {
                                     btnText143 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle143 = "width:50px;height:50px;color:black;font-size:24px";;
+                                    btnStyle143 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                     btnStyle143 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -1147,7 +1170,7 @@
                                 {
                                     btnText144 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle144 = "width:50px;height:50px;color:black;font-size:24px";;
+                                    btnStyle144 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                     btnStyle144 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -1157,7 +1180,7 @@
                                 {
                                     btnText145 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle145 = "width:50px;height:50px;color:black;font-size:24px";;
+                                    btnStyle145 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                     btnStyle145 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -1171,7 +1194,7 @@
                                 {
                                     btnText141 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle141 = "width:50px;height:50px;color:white;font-size:24px";;
+                                    btnStyle141 = "width:45px;height:45px;color:white;font-size:22px";;
 #else
                                     btnStyle141 = "width:60px;height:60px;color:white;font-size:34px";
 #endif
@@ -1181,7 +1204,7 @@
                                 {
                                     btnText142 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle142 = "width:50px;height:50px;color:white;font-size:24px";;
+                                    btnStyle142 = "width:45px;height:45px;color:white;font-size:22px";;
 #else
                                     btnStyle142 = "width:60px;height:60px;color:white;font-size:34px";
 #endif
@@ -1191,7 +1214,7 @@
                                 {
                                     btnText143 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle143 = "width:50px;height:50px;color:white;font-size:24px";;
+                                    btnStyle143 = "width:45px;height:45px;color:white;font-size:22px";;
 #else
                                     btnStyle143 = "width:60px;height:60px;color:white;font-size:34px";
 #endif
@@ -1201,7 +1224,7 @@
                                 {
                                     btnText144 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle144 = "width:50px;height:50px;color:white;font-size:24px";;
+                                    btnStyle144 = "width:45px;height:45px;color:white;font-size:22px";;
 #else
                                     btnStyle144 = "width:60px;height:60px;color:white;font-size:34px";
 #endif
@@ -1211,7 +1234,7 @@
                                 {
                                     btnText145 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle145 = "width:50px;height:50px;color:white;font-size:24px";;
+                                    btnStyle145 = "width:45px;height:45px;color:white;font-size:22px";;
 #else
                                     btnStyle145 = "width:60px;height:60px;color:white;font-size:34px";
 #endif
@@ -1229,7 +1252,7 @@
                             {
                                 btnText151 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle151 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle151 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle151 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -1239,7 +1262,7 @@
                             {
                                 btnText152 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle152 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle152 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle152 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -1249,7 +1272,7 @@
                             {
                                 btnText153 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle153 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle153 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle153 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -1259,7 +1282,7 @@
                             {
                                 btnText154 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle154 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle154 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle154 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -1269,7 +1292,7 @@
                             {
                                 btnText155 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle155 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle155 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle155 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -1285,7 +1308,7 @@
                                 {
                                     btnText151 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle151 = "width:50px;height:50px;color:black;font-size:24px";;
+                                    btnStyle151 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                     btnStyle151 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -1295,7 +1318,7 @@
                                 {
                                     btnText152 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle152 = "width:50px;height:50px;color:black;font-size:24px";;
+                                    btnStyle152 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                     btnStyle152 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -1305,7 +1328,7 @@
                                 {
                                     btnText153 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle153 = "width:50px;height:50px;color:black;font-size:24px";;
+                                    btnStyle153 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                     btnStyle153 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -1315,7 +1338,7 @@
                                 {
                                     btnText154 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle154 = "width:50px;height:50px;color:black;font-size:24px";;
+                                    btnStyle154 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                     btnStyle154 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -1325,7 +1348,7 @@
                                 {
                                     btnText155 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle155 = "width:50px;height:50px;color:black;font-size:24px";;
+                                    btnStyle155 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                     btnStyle155 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -1339,7 +1362,7 @@
                                 {
                                     btnText151 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle151 = "width:50px;height:50px;color:white;font-size:24px";;
+                                    btnStyle151 = "width:45px;height:45px;color:white;font-size:22px";;
 #else
                                     btnStyle151 = "width:60px;height:60px;color:white;font-size:34px";
 #endif
@@ -1349,7 +1372,7 @@
                                 {
                                     btnText152 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle152 = "width:50px;height:50px;color:white;font-size:24px";;
+                                    btnStyle152 = "width:45px;height:45px;color:white;font-size:22px";;
 #else
                                     btnStyle152 = "width:60px;height:60px;color:white;font-size:34px";
 #endif
@@ -1359,7 +1382,7 @@
                                 {
                                     btnText153 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle153 = "width:50px;height:50px;color:white;font-size:24px";;
+                                    btnStyle153 = "width:45px;height:45px;color:white;font-size:22px";;
 #else
                                     btnStyle153 = "width:60px;height:60px;color:white;font-size:34px";
 #endif
@@ -1369,7 +1392,7 @@
                                 {
                                     btnText154 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle154 = "width:50px;height:50px;color:white;font-size:24px";;
+                                    btnStyle154 = "width:45px;height:45px;color:white;font-size:22px";;
 #else
                                     btnStyle154 = "width:60px;height:60px;color:white;font-size:34px";
 #endif
@@ -1379,7 +1402,7 @@
                                 {
                                     btnText155 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle155 = "width:50px;height:50px;color:white;font-size:24px";;
+                                    btnStyle155 = "width:45px;height:45px;color:white;font-size:22px";;
 #else
                                     btnStyle155 = "width:60px;height:60px;color:white;font-size:34px";
 #endif
@@ -1397,7 +1420,7 @@
                             {
                                 btnText161 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle161 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle161 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle161 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -1407,7 +1430,7 @@
                             {
                                 btnText162 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle162 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle162 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle162 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -1417,7 +1440,7 @@
                             {
                                 btnText163 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle163 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle163 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle163 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -1427,7 +1450,7 @@
                             {
                                 btnText164 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle164 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle164 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle164 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -1437,7 +1460,7 @@
                             {
                                 btnText165 = currentWord[i].ToString();
 #if ANDROID
-                                btnStyle165 = "width:50px;height:50px;color:black;font-size:24px";;
+                                btnStyle165 = "width:45px;height:45px;color:black;font-size:22px";;
 #else
                                 btnStyle165 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -1453,7 +1476,7 @@
                                 {
                                     btnText161 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle161 = "width:50px;height:50px;color:black;font-size:24px";
+                                    btnStyle161 = "width:45px;height:45px;color:black;font-size:22px";
 #else
                                     btnStyle161 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -1463,7 +1486,7 @@
                                 {
                                     btnText162 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle162 = "width:50px;height:50px;color:black;font-size:24px";
+                                    btnStyle162 = "width:45px;height:45px;color:black;font-size:22px";
 #else
                                     btnStyle162 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -1473,7 +1496,7 @@
                                 {
                                     btnText163 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle163 = "width:50px;height:50px;color:black;font-size:24px";
+                                    btnStyle163 = "width:45px;height:45px;color:black;font-size:22px";
 #else
                                     btnStyle163 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -1483,7 +1506,7 @@
                                 {
                                     btnText164 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle164 = "width:50px;height:50px;color:black;font-size:24px";
+                                    btnStyle164 = "width:45px;height:45px;color:black;font-size:22px";
 #else
                                     btnStyle164 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -1493,7 +1516,7 @@
                                 {
                                     btnText165 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle165 = "width:50px;height:50px;color:black;font-size:24px";
+                                    btnStyle165 = "width:45px;height:45px;color:black;font-size:22px";
 #else
                                     btnStyle165 = "width:60px;height:60px;color:black;font-size:34px";
 #endif
@@ -1507,7 +1530,7 @@
                                 {
                                     btnText161 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle161 = "width:50px;height:50px;color:white;font-size:24px";
+                                    btnStyle161 = "width:45px;height:45px;color:white;font-size:22px";
 #else
                                     btnStyle161 = "width:60px;height:60px;color:white;font-size:34px";
 #endif
@@ -1517,7 +1540,7 @@
                                 {
                                     btnText162 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle162 = "width:50px;height:50px;color:white;font-size:24px";
+                                    btnStyle162 = "width:45px;height:45px;color:white;font-size:22px";
 #else
                                     btnStyle162 = "width:60px;height:60px;color:white;font-size:34px";
 #endif
@@ -1527,7 +1550,7 @@
                                 {
                                     btnText163 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle163 = "width:50px;height:50px;color:white;font-size:24px";
+                                    btnStyle163 = "width:45px;height:45px;color:white;font-size:22px";
 #else
                                     btnStyle163 = "width:60px;height:60px;color:white;font-size:34px";
 #endif
@@ -1537,7 +1560,7 @@
                                 {
                                     btnText164 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle164 = "width:50px;height:50px;color:white;font-size:24px";
+                                    btnStyle164 = "width:45px;height:45px;color:white;font-size:22px";
 #else
                                     btnStyle164 = "width:60px;height:60px;color:white;font-size:34px";
 #endif
@@ -1547,7 +1570,7 @@
                                 {
                                     btnText165 = currentWord[i].ToString();
 #if ANDROID
-                                    btnStyle165 = "width:50px;height:50px;color:white;font-size:24px";
+                                    btnStyle165 = "width:45px;height:45px;color:white;font-size:22px";
 #else
                                     btnStyle165 = "width:60px;height:60px;color:white;font-size:34px";
 #endif
@@ -1568,38 +1591,38 @@
     private void IsContains(char c)
     {
 #if ANDROID
-        if (c == 'Й') { btnColor1 = ButtonColor.Warning; btnStyle1 = "height:40px;width:28px;color:black;font-size:20px"; }
-        if (c == 'Ц') { btnColor2 = ButtonColor.Warning; btnStyle2 = "height:40px;width:28px;color:black;font-size:20px"; }
-        if (c == 'У') { btnColor3 = ButtonColor.Warning; btnStyle3 = "height:40px;width:28px;color:black;font-size:20px"; }
-        if (c == 'К') { btnColor4 = ButtonColor.Warning; btnStyle4 = "height:40px;width:28px;color:black;font-size:20px"; }
-        if (c == 'Е') { btnColor5 = ButtonColor.Warning; btnStyle5 = "height:40px;width:28px;color:black;font-size:20px"; }
-        if (c == 'Н') { btnColor6 = ButtonColor.Warning; btnStyle6 = "height:40px;width:28px;color:black;font-size:20px"; }
-        if (c == 'Г') { btnColor7 = ButtonColor.Warning; btnStyle7 = "height:40px;width:28px;color:black;font-size:20px"; }
-        if (c == 'Ш') { btnColor8 = ButtonColor.Warning; btnStyle8 = "height:40px;width:28px;color:black;font-size:20px"; }
-        if (c == 'Щ') { btnColor9 = ButtonColor.Warning; btnStyle9 = "height:40px;width:28px;color:black;font-size:20px"; }
-        if (c == 'З') { btnColor10 = ButtonColor.Warning; btnStyle10 = "height:40px;width:28px;color:black;font-size:20px"; }
-        if (c == 'Х') { btnColor11 = ButtonColor.Warning; btnStyle11 = "height:40px;width:28px;color:black;font-size:20px"; }
-        if (c == 'Ъ') { btnColor12 = ButtonColor.Warning; btnStyle12 = "height:40px;width:28px;color:black;font-size:20px"; }
-        if (c == 'Ф') { btnColor13 = ButtonColor.Warning; btnStyle13 = "height:40px;width:28px;color:black;font-size:20px"; }
-        if (c == 'Ы') { btnColor14 = ButtonColor.Warning; btnStyle14 = "height:40px;width:28px;color:black;font-size:20px"; }
-        if (c == 'В') { btnColor15 = ButtonColor.Warning; btnStyle15 = "height:40px;width:28px;color:black;font-size:20px"; }
-        if (c == 'А') { btnColor16 = ButtonColor.Warning; btnStyle16 = "height:40px;width:28px;color:black;font-size:20px"; }
-        if (c == 'П') { btnColor17 = ButtonColor.Warning; btnStyle17 = "height:40px;width:28px;color:black;font-size:20px"; }
-        if (c == 'Р') { btnColor18 = ButtonColor.Warning; btnStyle18 = "height:40px;width:28px;color:black;font-size:20px"; }
-        if (c == 'О') { btnColor19 = ButtonColor.Warning; btnStyle19 = "height:40px;width:28px;color:black;font-size:20px"; }
-        if (c == 'Л') { btnColor20 = ButtonColor.Warning; btnStyle20 = "height:40px;width:28px;color:black;font-size:20px"; }
-        if (c == 'Д') { btnColor21 = ButtonColor.Warning; btnStyle21 = "height:40px;width:28px;color:black;font-size:20px"; }
-        if (c == 'Ж') { btnColor22 = ButtonColor.Warning; btnStyle22 = "height:40px;width:28px;color:black;font-size:20px"; }
-        if (c == 'Э') { btnColor23 = ButtonColor.Warning; btnStyle23 = "height:40px;width:28px;color:black;font-size:20px"; }
-        if (c == 'Я') { btnColor24 = ButtonColor.Warning; btnStyle24 = "height:40px;width:28px;color:black;font-size:20px"; }
-        if (c == 'Ч') { btnColor25 = ButtonColor.Warning; btnStyle25 = "height:40px;width:28px;color:black;font-size:20px"; }
-        if (c == 'С') { btnColor26 = ButtonColor.Warning; btnStyle26 = "height:40px;width:28px;color:black;font-size:20px"; }
-        if (c == 'М') { btnColor27 = ButtonColor.Warning; btnStyle27 = "height:40px;width:28px;color:black;font-size:20px"; }
-        if (c == 'И') { btnColor28 = ButtonColor.Warning; btnStyle28 = "height:40px;width:28px;color:black;font-size:20px"; }
-        if (c == 'Т') { btnColor29 = ButtonColor.Warning; btnStyle29 = "height:40px;width:28px;color:black;font-size:20px"; }
-        if (c == 'Ь') { btnColor30 = ButtonColor.Warning; btnStyle30 = "height:40px;width:28px;color:black;font-size:20px"; }
-        if (c == 'Б') { btnColor31 = ButtonColor.Warning; btnStyle31 = "height:40px;width:28px;color:black;font-size:20px"; }
-        if (c == 'Ю') { btnColor32 = ButtonColor.Warning; btnStyle32 = "height:40px;width:28px;color:black;font-size:20px"; }
+        if (c == 'Й') { btnColor1 = ButtonColor.Warning; btnStyle1 = "height:40px;width:25px;color:black;font-size:16px"; }
+        if (c == 'Ц') { btnColor2 = ButtonColor.Warning; btnStyle2 = "height:40px;width:25px;color:black;font-size:16px"; }
+        if (c == 'У') { btnColor3 = ButtonColor.Warning; btnStyle3 = "height:40px;width:25px;color:black;font-size:16px"; }
+        if (c == 'К') { btnColor4 = ButtonColor.Warning; btnStyle4 = "height:40px;width:25px;color:black;font-size:16px"; }
+        if (c == 'Е') { btnColor5 = ButtonColor.Warning; btnStyle5 = "height:40px;width:25px;color:black;font-size:16px"; }
+        if (c == 'Н') { btnColor6 = ButtonColor.Warning; btnStyle6 = "height:40px;width:25px;color:black;font-size:16px"; }
+        if (c == 'Г') { btnColor7 = ButtonColor.Warning; btnStyle7 = "height:40px;width:25px;color:black;font-size:16px"; }
+        if (c == 'Ш') { btnColor8 = ButtonColor.Warning; btnStyle8 = "height:40px;width:25px;color:black;font-size:16px"; }
+        if (c == 'Щ') { btnColor9 = ButtonColor.Warning; btnStyle9 = "height:40px;width:25px;color:black;font-size:16px"; }
+        if (c == 'З') { btnColor10 = ButtonColor.Warning; btnStyle10 = "height:40px;width:25px;color:black;font-size:16px"; }
+        if (c == 'Х') { btnColor11 = ButtonColor.Warning; btnStyle11 = "height:40px;width:25px;color:black;font-size:16px"; }
+        if (c == 'Ъ') { btnColor12 = ButtonColor.Warning; btnStyle12 = "height:40px;width:25px;color:black;font-size:16px"; }
+        if (c == 'Ф') { btnColor13 = ButtonColor.Warning; btnStyle13 = "height:40px;width:25px;color:black;font-size:16px"; }
+        if (c == 'Ы') { btnColor14 = ButtonColor.Warning; btnStyle14 = "height:40px;width:25px;color:black;font-size:16px"; }
+        if (c == 'В') { btnColor15 = ButtonColor.Warning; btnStyle15 = "height:40px;width:25px;color:black;font-size:16px"; }
+        if (c == 'А') { btnColor16 = ButtonColor.Warning; btnStyle16 = "height:40px;width:25px;color:black;font-size:16px"; }
+        if (c == 'П') { btnColor17 = ButtonColor.Warning; btnStyle17 = "height:40px;width:25px;color:black;font-size:16px"; }
+        if (c == 'Р') { btnColor18 = ButtonColor.Warning; btnStyle18 = "height:40px;width:25px;color:black;font-size:16px"; }
+        if (c == 'О') { btnColor19 = ButtonColor.Warning; btnStyle19 = "height:40px;width:25px;color:black;font-size:16px"; }
+        if (c == 'Л') { btnColor20 = ButtonColor.Warning; btnStyle20 = "height:40px;width:25px;color:black;font-size:16px"; }
+        if (c == 'Д') { btnColor21 = ButtonColor.Warning; btnStyle21 = "height:40px;width:25px;color:black;font-size:16px"; }
+        if (c == 'Ж') { btnColor22 = ButtonColor.Warning; btnStyle22 = "height:40px;width:25px;color:black;font-size:16px"; }
+        if (c == 'Э') { btnColor23 = ButtonColor.Warning; btnStyle23 = "height:40px;width:25px;color:black;font-size:16px"; }
+        if (c == 'Я') { btnColor24 = ButtonColor.Warning; btnStyle24 = "height:40px;width:25px;color:black;font-size:16px"; }
+        if (c == 'Ч') { btnColor25 = ButtonColor.Warning; btnStyle25 = "height:40px;width:25px;color:black;font-size:16px"; }
+        if (c == 'С') { btnColor26 = ButtonColor.Warning; btnStyle26 = "height:40px;width:25px;color:black;font-size:16px"; }
+        if (c == 'М') { btnColor27 = ButtonColor.Warning; btnStyle27 = "height:40px;width:25px;color:black;font-size:16px"; }
+        if (c == 'И') { btnColor28 = ButtonColor.Warning; btnStyle28 = "height:40px;width:25px;color:black;font-size:16px"; }
+        if (c == 'Т') { btnColor29 = ButtonColor.Warning; btnStyle29 = "height:40px;width:25px;color:black;font-size:16px"; }
+        if (c == 'Ь') { btnColor30 = ButtonColor.Warning; btnStyle30 = "height:40px;width:25px;color:black;font-size:16px"; }
+        if (c == 'Б') { btnColor31 = ButtonColor.Warning; btnStyle31 = "height:40px;width:25px;color:black;font-size:16px"; }
+        if (c == 'Ю') { btnColor32 = ButtonColor.Warning; btnStyle32 = "height:40px;width:25px;color:black;font-size:16px"; }
 #else
         if (c == 'Й') { btnColor1 = ButtonColor.Warning; btnStyle1 = "height: 40px; color: black"; }
         if (c == 'Ц') { btnColor2 = ButtonColor.Warning; btnStyle2 = "height: 40px; color: black"; }
@@ -1639,38 +1662,38 @@
     private void IsNotContains(char c)
     {
 #if ANDROID
-        if (c == 'Й') { btnColor1 = ButtonColor.Secondary; btnStyle1 = "height:40px;width:28px;color:white;font-size:20px"; }
-        if (c == 'Ц') { btnColor2 = ButtonColor.Secondary; btnStyle2 = "height:40px;width:28px;color:white;font-size:20px"; }
-        if (c == 'У') { btnColor3 = ButtonColor.Secondary; btnStyle3 = "height:40px;width:28px;color:white;font-size:20px"; }
-        if (c == 'К') { btnColor4 = ButtonColor.Secondary; btnStyle4 = "height:40px;width:28px;color:white;font-size:20px"; }
-        if (c == 'Е') { btnColor5 = ButtonColor.Secondary; btnStyle5 = "height:40px;width:28px;color:white;font-size:20px"; }
-        if (c == 'Н') { btnColor6 = ButtonColor.Secondary; btnStyle6 = "height:40px;width:28px;color:white;font-size:20px"; }
-        if (c == 'Г') { btnColor7 = ButtonColor.Secondary; btnStyle7 = "height:40px;width:28px;color:white;font-size:20px"; }
-        if (c == 'Ш') { btnColor8 = ButtonColor.Secondary; btnStyle8 = "height:40px;width:28px;color:white;font-size:20px"; }
-        if (c == 'Щ') { btnColor9 = ButtonColor.Secondary; btnStyle9 = "height:40px;width:28px;color:white;font-size:20px"; }
-        if (c == 'З') { btnColor10 = ButtonColor.Secondary; btnStyle10 = "height:40px;width:28px;color:white;font-size:20px"; }
-        if (c == 'Х') { btnColor11 = ButtonColor.Secondary; btnStyle11 = "height:40px;width:28px;color:white;font-size:20px"; }
-        if (c == 'Ъ') { btnColor12 = ButtonColor.Secondary; btnStyle12 = "height:40px;width:28px;color:white;font-size:20px"; }
-        if (c == 'Ф') { btnColor13 = ButtonColor.Secondary; btnStyle13 = "height:40px;width:28px;color:white;font-size:20px"; }
-        if (c == 'Ы') { btnColor14 = ButtonColor.Secondary; btnStyle14 = "height:40px;width:28px;color:white;font-size:20px"; }
-        if (c == 'В') { btnColor15 = ButtonColor.Secondary; btnStyle15 = "height:40px;width:28px;color:white;font-size:20px"; }
-        if (c == 'А') { btnColor16 = ButtonColor.Secondary; btnStyle16 = "height:40px;width:28px;color:white;font-size:20px"; }
-        if (c == 'П') { btnColor17 = ButtonColor.Secondary; btnStyle17 = "height:40px;width:28px;color:white;font-size:20px"; }
-        if (c == 'Р') { btnColor18 = ButtonColor.Secondary; btnStyle18 = "height:40px;width:28px;color:white;font-size:20px"; }
-        if (c == 'О') { btnColor19 = ButtonColor.Secondary; btnStyle19 = "height:40px;width:28px;color:white;font-size:20px"; }
-        if (c == 'Л') { btnColor20 = ButtonColor.Secondary; btnStyle20 = "height:40px;width:28px;color:white;font-size:20px"; }
-        if (c == 'Д') { btnColor21 = ButtonColor.Secondary; btnStyle21 = "height:40px;width:28px;color:white;font-size:20px"; }
-        if (c == 'Ж') { btnColor22 = ButtonColor.Secondary; btnStyle22 = "height:40px;width:28px;color:white;font-size:20px"; }
-        if (c == 'Э') { btnColor23 = ButtonColor.Secondary; btnStyle23 = "height:40px;width:28px;color:white;font-size:20px"; }
-        if (c == 'Я') { btnColor24 = ButtonColor.Secondary; btnStyle24 = "height:40px;width:28px;color:white;font-size:20px"; }
-        if (c == 'Ч') { btnColor25 = ButtonColor.Secondary; btnStyle25 = "height:40px;width:28px;color:white;font-size:20px"; }
-        if (c == 'С') { btnColor26 = ButtonColor.Secondary; btnStyle26 = "height:40px;width:28px;color:white;font-size:20px"; }
-        if (c == 'М') { btnColor27 = ButtonColor.Secondary; btnStyle27 = "height:40px;width:28px;color:white;font-size:20px"; }
-        if (c == 'И') { btnColor28 = ButtonColor.Secondary; btnStyle28 = "height:40px;width:28px;color:white;font-size:20px"; }
-        if (c == 'Т') { btnColor29 = ButtonColor.Secondary; btnStyle29 = "height:40px;width:28px;color:white;font-size:20px"; }
-        if (c == 'Ь') { btnColor30 = ButtonColor.Secondary; btnStyle30 = "height:40px;width:28px;color:white;font-size:20px"; }
-        if (c == 'Б') { btnColor31 = ButtonColor.Secondary; btnStyle31 = "height:40px;width:28px;color:white;font-size:20px"; }
-        if (c == 'Ю') { btnColor32 = ButtonColor.Secondary; btnStyle32 = "height:40px;width:28px;color:white;font-size:20px"; }
+        if (c == 'Й') { btnColor1 = ButtonColor.Secondary; btnStyle1 = "height:40px;width:25px;color:white;font-size:16px"; }
+        if (c == 'Ц') { btnColor2 = ButtonColor.Secondary; btnStyle2 = "height:40px;width:25px;color:white;font-size:16px"; }
+        if (c == 'У') { btnColor3 = ButtonColor.Secondary; btnStyle3 = "height:40px;width:25px;color:white;font-size:16px"; }
+        if (c == 'К') { btnColor4 = ButtonColor.Secondary; btnStyle4 = "height:40px;width:25px;color:white;font-size:16px"; }
+        if (c == 'Е') { btnColor5 = ButtonColor.Secondary; btnStyle5 = "height:40px;width:25px;color:white;font-size:16px"; }
+        if (c == 'Н') { btnColor6 = ButtonColor.Secondary; btnStyle6 = "height:40px;width:25px;color:white;font-size:16px"; }
+        if (c == 'Г') { btnColor7 = ButtonColor.Secondary; btnStyle7 = "height:40px;width:25px;color:white;font-size:16px"; }
+        if (c == 'Ш') { btnColor8 = ButtonColor.Secondary; btnStyle8 = "height:40px;width:25px;color:white;font-size:16px"; }
+        if (c == 'Щ') { btnColor9 = ButtonColor.Secondary; btnStyle9 = "height:40px;width:25px;color:white;font-size:16px"; }
+        if (c == 'З') { btnColor10 = ButtonColor.Secondary; btnStyle10 = "height:40px;width:25px;color:white;font-size:16px"; }
+        if (c == 'Х') { btnColor11 = ButtonColor.Secondary; btnStyle11 = "height:40px;width:25px;color:white;font-size:16px"; }
+        if (c == 'Ъ') { btnColor12 = ButtonColor.Secondary; btnStyle12 = "height:40px;width:25px;color:white;font-size:16px"; }
+        if (c == 'Ф') { btnColor13 = ButtonColor.Secondary; btnStyle13 = "height:40px;width:25px;color:white;font-size:16px"; }
+        if (c == 'Ы') { btnColor14 = ButtonColor.Secondary; btnStyle14 = "height:40px;width:25px;color:white;font-size:16px"; }
+        if (c == 'В') { btnColor15 = ButtonColor.Secondary; btnStyle15 = "height:40px;width:25px;color:white;font-size:16px"; }
+        if (c == 'А') { btnColor16 = ButtonColor.Secondary; btnStyle16 = "height:40px;width:25px;color:white;font-size:16px"; }
+        if (c == 'П') { btnColor17 = ButtonColor.Secondary; btnStyle17 = "height:40px;width:25px;color:white;font-size:16px"; }
+        if (c == 'Р') { btnColor18 = ButtonColor.Secondary; btnStyle18 = "height:40px;width:25px;color:white;font-size:16px"; }
+        if (c == 'О') { btnColor19 = ButtonColor.Secondary; btnStyle19 = "height:40px;width:25px;color:white;font-size:16px"; }
+        if (c == 'Л') { btnColor20 = ButtonColor.Secondary; btnStyle20 = "height:40px;width:25px;color:white;font-size:16px"; }
+        if (c == 'Д') { btnColor21 = ButtonColor.Secondary; btnStyle21 = "height:40px;width:25px;color:white;font-size:16px"; }
+        if (c == 'Ж') { btnColor22 = ButtonColor.Secondary; btnStyle22 = "height:40px;width:25px;color:white;font-size:16px"; }
+        if (c == 'Э') { btnColor23 = ButtonColor.Secondary; btnStyle23 = "height:40px;width:25px;color:white;font-size:16px"; }
+        if (c == 'Я') { btnColor24 = ButtonColor.Secondary; btnStyle24 = "height:40px;width:25px;color:white;font-size:16px"; }
+        if (c == 'Ч') { btnColor25 = ButtonColor.Secondary; btnStyle25 = "height:40px;width:25px;color:white;font-size:16px"; }
+        if (c == 'С') { btnColor26 = ButtonColor.Secondary; btnStyle26 = "height:40px;width:25px;color:white;font-size:16px"; }
+        if (c == 'М') { btnColor27 = ButtonColor.Secondary; btnStyle27 = "height:40px;width:25px;color:white;font-size:16px"; }
+        if (c == 'И') { btnColor28 = ButtonColor.Secondary; btnStyle28 = "height:40px;width:25px;color:white;font-size:16px"; }
+        if (c == 'Т') { btnColor29 = ButtonColor.Secondary; btnStyle29 = "height:40px;width:25px;color:white;font-size:16px"; }
+        if (c == 'Ь') { btnColor30 = ButtonColor.Secondary; btnStyle30 = "height:40px;width:25px;color:white;font-size:16px"; }
+        if (c == 'Б') { btnColor31 = ButtonColor.Secondary; btnStyle31 = "height:40px;width:25px;color:white;font-size:16px"; }
+        if (c == 'Ю') { btnColor32 = ButtonColor.Secondary; btnStyle32 = "height:40px;width:25px;color:white;font-size:16px"; }
 #else
         if (c == 'Й') { btnColor1 = ButtonColor.Secondary; btnStyle1 = "height: 40px; color: white"; }
         if (c == 'Ц') { btnColor2 = ButtonColor.Secondary; btnStyle2 = "height: 40px; color: white"; }
@@ -1705,5 +1728,11 @@
         if (c == 'Б') { btnColor31 = ButtonColor.Secondary; btnStyle31 = "height: 40px; color: white"; }
         if (c == 'Ю') { btnColor32 = ButtonColor.Secondary; btnStyle32 = "height: 40px; color: white"; }
 #endif
+    }
+
+    private void SaveStats()
+    {
+        var json = JsonSerializer.Serialize(new Dictionary<String, int> { { "wins", win }, { "loses", lose } });
+        File.WriteAllText(statsFilePath, json);
     }
 }

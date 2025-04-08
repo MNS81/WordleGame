@@ -45,7 +45,7 @@
 
     <ItemGroup>
         <!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\abcd.png" Color="#00ffffff" />
+		<MauiIcon Include="Resources\AppIcon\abc_block.png" Color="#00ffffff" />
 
         <!-- Splash Screen -->
         <MauiSplashScreen Include="Resources\AppIcon\abc_block.png" Color="#e6f2ff" BaseSize="128,128" />
@@ -63,6 +63,7 @@
         <Content Include="Resources\AppIcon\abc_block.png">
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Content>
+		<MauiAsset Include="Resources\Raw\Stats.json" />
 		<MauiAsset Include="Resources\Raw\newgame.wav" />
 		<MauiAsset Include="Resources\Raw\win.wav" />
 		<MauiAsset Include="Resources\Raw\lose.wav" />
